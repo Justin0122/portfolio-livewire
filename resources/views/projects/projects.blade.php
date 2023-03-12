@@ -1,9 +1,12 @@
 <x-app-layout>
-
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <x-header>
             {{ __('Projects') }}
-        </h2>
+            <x-slot name="actions">
+                <x-button-link :href="route('projects.create')" :active="request()->routeIs('projects.create')">
+                    Create Project
+                </x-button-link>
+            </x-slot>
+        </x-header>
     </x-slot>
-
 </x-app-layout>
