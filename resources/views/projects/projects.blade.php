@@ -2,11 +2,13 @@
     <x-slot name="header">
         <x-header>
             {{ __('Projects') }}
-            <x-slot name="actions">
-                <x-button-link :href="route('projects.create')" :active="request()->routeIs('projects.create')">
-                    Create Project
-                </x-button-link>
-            </x-slot>
         </x-header>
     </x-slot>
+
+    <div class="p-2 sm:px-44 sm:py-8">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <livewire:projects-table />
+        </div>
+    </div>
+
 </x-app-layout>

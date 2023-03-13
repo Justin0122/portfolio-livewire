@@ -7,4 +7,9 @@
         {{ $actions }}
     </div>
 @endif
+@if (isset($breadcrumbs))
+    <div class="header__breadcrumbs">
+        {{ $breadcrumbs }}
+    </div>
+@endif
 </div>

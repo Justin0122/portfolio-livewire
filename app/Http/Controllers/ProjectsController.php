@@ -2,42 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Projects\ProjectCreateRequest;
+use App\Http\Requests\Projects\ProjectUpdateRequest;
+use App\Models\Project;
 
 class ProjectsController extends Controller
 {
+
     public function index()
     {
-        return view('projects.projects');
+        $projectModel = new Project();
+        $projects = $projectModel->getProjects();
+
+        return view('projects.projects', compact('projects'));
+    }
+    public function create(ProjectCreateRequest $request)
+    {
+        $project = Project::create($request->validated());
+
+        return redirect()->route('projects.show', $project);
     }
 
-    public function create()
+    public function update(ProjectUpdateRequest $request, Project $project)
     {
-        return view('projects.create');
+        $project->update($request->validated());
+
+        return redirect()->route('projects.show', $project);
     }
 
-    public function store()
+    public function edit(Project $project)
     {
-        return view('projects.store');
+        return view('projects.project.edit', [
+            'project' => $project,
+        ])->layout('layouts.app');
     }
 
-    public function show()
-    {
-        return view('projects.show');
-    }
 
-    public function edit()
-    {
-        return view('projects.edit');
-    }
-
-    public function update()
-    {
-        return view('projects.update');
-    }
-
-    public function destroy()
-    {
-        return view('projects.destroy');
-    }
 }
+
+
