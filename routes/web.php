@@ -29,7 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//make a new route for the projects page
 Route::middleware('auth')->group(function () {
     Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
     Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.create');
