@@ -29,11 +29,15 @@ class Project extends Model
         return $this->all();
     }
 
-    public function getProject($id)
+    public function getFiles(Project $project)
     {
-        return $this->find($id);
+        if (file_exists(storage_path('app/public/' . $project->id))) {
+            $files = scandir(storage_path('app/public/' . $project->id));
+            $files = array_diff($files, array('.', '..'));
+            $files = array_values($files);
+        } else {
+            $files = [];
+        }
+        return $files;
     }
-
-
-
 }

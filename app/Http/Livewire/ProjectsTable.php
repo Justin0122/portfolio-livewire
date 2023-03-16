@@ -20,8 +20,20 @@ class ProjectsTable extends Component
         $this->projects = Project::all();
     }
 
+    public function render()
+    {
+        return view('livewire.projects-table', [
+            'projects' => $this->projects,
+        ]);
+    }
+
     public function createProject()
     {
+        $this->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
         $data = [
             'name' => $this->name,
             'description' => $this->description,
@@ -46,13 +58,6 @@ class ProjectsTable extends Component
         $project = Project::find($id);
         $project->delete();
         $this->projects = Project::all();
-    }
-
-    public function render()
-    {
-        return view('livewire.projects-table', [
-            'projects' => $this->projects,
-        ]);
     }
 
     public function toggleAll()
