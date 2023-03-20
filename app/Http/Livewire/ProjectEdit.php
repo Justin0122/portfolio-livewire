@@ -13,6 +13,7 @@ class ProjectEdit extends Component
 
     public $name;
     public $description;
+    public $github_link;
     public $photos = [];
     public $images = [];
     public $active = false;
@@ -21,6 +22,7 @@ class ProjectEdit extends Component
     {
         $this->name = $project->name;
         $this->description = $project->description;
+        $this->github_link = $project->github_link;
         $this->project = $project;
         $this->images = $project->getFiles($project);
         $this->active = $project->is_active;
@@ -39,6 +41,7 @@ class ProjectEdit extends Component
         $this->validate([
             'name' => 'required',
             'description' => 'required',
+            'github_link' => '',
             'photos.*' => 'image|max:1024', // 1MB Max
             'active' => 'boolean',
         ]);
@@ -49,6 +52,7 @@ class ProjectEdit extends Component
         $data = [
             'name' => $this->name,
             'description' => $this->description,
+            'github_link' => $this->github_link,
             'updated_at' => now(),
             'is_active' => $this->active,
         ];

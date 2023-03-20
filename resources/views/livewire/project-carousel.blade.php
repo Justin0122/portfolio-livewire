@@ -4,7 +4,7 @@
             @php
                 $random = rand(1, 3);
             @endphp
-            <div class="item">
+            <div class="item" onclick="window.location.href = '/project/{{ $project->id }}'">
                 <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-5 sm:px-6">
                         <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
@@ -16,10 +16,22 @@
                     </div>
                     <div class="px-4 py-12 bg-gray-50 dark:bg-gray-800 sm:px-6">
                         <div class="content-center">
-                            <div class="content-center">
+                            <div class="flex items-center justify-center">
+                                @php
+                                    if (file_exists('storage/' . $project->id)) {
+                                @endphp
                                 <img
                                     src="/storage/{{ $project->id }}/{{ strtolower($project->name) }}{{ $random }}.png"
                                     class="w-80 h-40 object-cover">
+                                @php
+                                    } else {
+                                @endphp
+                                <img
+                                    src="/storage/default.png"
+                                    class="w-20 h-20 object-cover">
+                                @php
+                                    }
+                                @endphp
                             </div>
                         </div>
                     </div>
@@ -47,13 +59,6 @@
             </div>
         @endforeach
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
-    <!--[if (lt IE 9)]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.helper.ie8.js"></script>
-    <![endif]-->
-    <!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
     <script>
         var slider = tns({
             container: '.my-slider',

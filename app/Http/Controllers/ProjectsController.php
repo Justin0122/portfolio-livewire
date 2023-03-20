@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Projects\ProjectUpdateRequest;
 use App\Models\Project;
 
 class ProjectsController extends Controller
@@ -13,6 +12,7 @@ class ProjectsController extends Controller
         $projects = $projectModel->getProjects();
         return view('projects.projects', compact('projects'));
     }
+
     public function edit(Project $project)
     {
         $files = $project->getFiles($project);
@@ -22,6 +22,17 @@ class ProjectsController extends Controller
             'files' => $files,
         ]);
     }
+
+    public function show(Project $project)
+    {
+        $files = $project->getFiles($project);
+
+        return view('projects.project.show', [
+            'project' => $project,
+            'files' => $files,
+        ]);
+    }
+
 }
 
 

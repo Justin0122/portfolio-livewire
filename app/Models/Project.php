@@ -10,6 +10,7 @@ class Project extends Model
     protected $fillable = [
         'name',
         'description',
+        'github_link',
         'start_date',
         'end_date',
         'status',
