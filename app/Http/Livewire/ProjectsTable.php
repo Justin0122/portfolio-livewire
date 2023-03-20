@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Project;
-use Illuminate\Http\Request;
 
 class ProjectsTable extends Component
 {

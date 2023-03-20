@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use App\Models\Project;
 use Livewire\WithFileUploads;
@@ -42,27 +43,39 @@ class ProjectEdit extends Component
             'active' => 'boolean',
         ]);
 
+        $project = Project::find($id);
+        $projectName = strtolower(str_replace(' ', '-', $this->name));
+        $imageCount = count($project->getFiles($project));
         $data = [
             'name' => $this->name,
             'description' => $this->description,
             'updated_at' => now(),
             'is_active' => $this->active,
-            ];
+        ];
 
         if ($this->photos) {
-            $project = Project::find($id);
             foreach ($this->photos as $photo) {
-                $photo->storeAs('public/' . $project->id, $photo->getClientOriginalName());
+                $imageCount++;
+                $photoName = $projectName . $imageCount . '.' . $photo->getClientOriginalExtension();
+                $photo->storeAs('public/' . $project->id, $photoName);
+            }
+        } else {
+            $files = Storage::files('public/' . $project->id);
+            foreach ($files as $file) {
+                $oldName = basename($file);
+                $pattern = '/^' . preg_quote($project->name) . '/i';
+                $newName = preg_replace($pattern, $projectName, $oldName, 1);
+                Storage::move($file, 'public/' . $project->id . '/' . $newName);
             }
         }
-        $project = Project::find($id);
+
+
         $project->update($data);
-        $this->project = Project::find($id);
-        $this->images = $this->project->getFiles($this->project);
-        $this->reset('photos');
+        $this->project = $project;
+        $this->images = $project->getFiles($project);
         $this->render();
-        $this->emit('projectUpdated');
     }
+
 
     public function removePhoto($id, $photo)
     {
