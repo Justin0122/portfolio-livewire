@@ -42,7 +42,6 @@ class ProjectEdit extends Component
             'name' => 'required',
             'description' => 'required',
             'github_link' => '',
-            'photos.*' => 'image|max:1024', // 1MB Max
             'active' => 'boolean',
         ]);
 
@@ -72,8 +71,7 @@ class ProjectEdit extends Component
                 Storage::move($file, 'public/' . $project->id . '/' . $newName);
             }
         }
-
-
+        session()->flash('message', 'Image added succesfully.');
         $project->update($data);
         $this->project = $project;
         $this->images = $project->getFiles($project);

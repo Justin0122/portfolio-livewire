@@ -24,9 +24,13 @@
                 <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6"><input type="text" class="w-full border-2 border-gray-300 p-2 rounded-lg"
-                                                 name="name" wire:model.defer="name"/></td>
+                                                 name="name" wire:model.defer="name"/>
+                        @error ('name') <span class="text-red-500">{{ $message }}</span> @enderror
+                    </td>
                     <td class="py-4 px-6"><input type="text" class="w-full border-2 border-gray-300 p-2 rounded-lg"
-                                                 name="description" wire:model.defer="description"/></td>
+                                                 name="description" wire:model.defer="description"/>
+                        @error ('description') <span class="text-red-500">{{ $message }}</span> @enderror
+                    </td>
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6"></td>
@@ -54,13 +58,15 @@
                         </div>
                     </td>
                     <td class="py-4 px-6">{{ $project->name }}</td>
-                    <td class="py-4 px-6">{{ $project->description }}</td>
+                    <td class="py-4 px-6 truncate max-w-xs">
+                        {{ $project->description }}</td>
                     <td class="py-4 px-6 w-1/6">
                         <div class="flex flex-wrap">
                             @php
                                 if (file_exists('storage/' . $project->id)) {
                                 $imgPath = 'storage/' . $project->id . '/';
                                 $images = glob($imgPath . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+                                if (count($images) > 0)
                                     echo '<img src="' . $images[0] . '" alt="Image" class="w-50 h-20 object-cover rounded-lg mr-4 mb-4 hover:opacity-90 transition ease-in-out duration-150 hover:scale-110 transform hover:shadow-lg" />';
                                 }
                             @endphp
