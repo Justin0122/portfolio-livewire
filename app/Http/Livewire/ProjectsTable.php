@@ -39,23 +39,8 @@ class ProjectsTable extends Component
             'created_at' => now(),
             'updated_at' => now(),
         ];
+
         Project::create($data);
-        $this->projects = Project::all();
-    }
-
-    public function updateProject($id)
-    {
-        $project = Project::find($id);
-        $project->name = $this->name;
-        $project->description = $this->description;
-        $project->save();
-        $this->projects = Project::all();
-    }
-
-    public function deleteProject($id)
-    {
-        $project = Project::find($id);
-        $project->delete();
         $this->projects = Project::all();
     }
 
