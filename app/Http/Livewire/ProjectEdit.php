@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use App\Models\Project;
@@ -17,6 +20,7 @@ class ProjectEdit extends Component
     public $photos = [];
     public $images = [];
     public $active = false;
+    public $pinned = false;
 
     public function mount(Project $project)
     {
@@ -26,6 +30,7 @@ class ProjectEdit extends Component
         $this->project = $project;
         $this->images = $project->getFiles($project);
         $this->active = $project->is_active;
+        $this->pinned = $project->is_pinned;
     }
 
     public function render()
@@ -43,6 +48,7 @@ class ProjectEdit extends Component
             'description' => 'required',
             'github_link' => '',
             'active' => 'boolean',
+            'pinned' => 'boolean',
         ]);
 
         $project = Project::find($id);
@@ -54,6 +60,7 @@ class ProjectEdit extends Component
             'github_link' => $this->github_link,
             'updated_at' => now(),
             'is_active' => $this->active,
+            'is_pinned' => $this->pinned,
         ];
 
         if ($this->photos) {
@@ -71,7 +78,7 @@ class ProjectEdit extends Component
                 Storage::move($file, 'public/' . $project->id . '/' . $newName);
             }
         }
-        session()->flash('message', 'Image added succesfully.');
+        session()->flash('message', 'Image added successfully.');
         $project->update($data);
         $this->project = $project;
         $this->images = $project->getFiles($project);

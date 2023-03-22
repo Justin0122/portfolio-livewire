@@ -11,7 +11,7 @@ class ProjectCarousel extends Component
 
     public function mount()
     {
-        $this->projects = Project::all();
+        $this->projects = Project::all()->where('is_pinned', true);
     }
 
     public function render()

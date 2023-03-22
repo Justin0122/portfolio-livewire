@@ -7,6 +7,7 @@
                     <th scope="col" class="px-4 py-3">Name</th>
                     <th scope="col" class="px-4 py-3 text-center">Github</th>
                     <th scope="col" class="px-4 py-3 text-center">Active</th>
+                    <th scope="col" class="px-4 py-3 text-center">Pin</th>
                     <th scope="col" class="px-4 py-3 text-center">Action</th>
                 </tr>
                 </thead>
@@ -26,6 +27,11 @@
                         <label for="active"></label><input type="checkbox" class="form-checkbox h-5 w-5 text-green-600"
                                                            wire:model="active"
                                                            name="active" id="active"/>
+                    </td>
+                    <td class="py-4 px-6 text-center">
+                        <label for="pin"></label><input type="checkbox" class="form-checkbox h-5 w-5 text-green-600"
+                                                        wire:model="pinned"
+                                                        name="pinned" id="pinned"/>
                     </td>
                     <td class="py-4 px-6 text-center">
                         <button
