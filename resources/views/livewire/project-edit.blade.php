@@ -25,12 +25,12 @@
                     </td>
                     <td class="py-4 px-6 text-center">
                         <label for="active"></label><input type="checkbox" class="form-checkbox h-5 w-5 text-green-600"
-                                                           wire:model="active"
+                                                           wire:model.defer="active"
                                                            name="active" id="active"/>
                     </td>
                     <td class="py-4 px-6 text-center">
                         <label for="pin"></label><input type="checkbox" class="form-checkbox h-5 w-5 text-green-600"
-                                                        wire:model="pinned"
+                                                        wire:model.defer="pinned"
                                                         name="pinned" id="pinned"/>
                     </td>
                     <td class="py-4 px-6 text-center">

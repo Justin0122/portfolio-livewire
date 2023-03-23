@@ -15,6 +15,8 @@ class Project extends Model
         'end_date',
         'status',
         'user_id',
+        'is_active',
+        'is_pinned',
     ];
 
     public static function create(array $data)

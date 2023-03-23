@@ -7,7 +7,7 @@
 
     <div class="p-2 sm:px-44 sm:py-8">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <livewire:projects-table />
+            <livewire:projects-table/>
         </div>
     </div>
 

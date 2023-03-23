@@ -1,4 +1,19 @@
 <div>
+    <dl>
+        <div class="px-4 py-2 sm:grid sm:gap-4 sm:px-6">
+            @if ($project->github_link)
+                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    Github:
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 dark:text-gray-100 sm:mt-0 sm:col-span-2">
+                    <a href="{{ $project->github_link }}"
+                       class="text-indigo-600 hover:text-indigo-900">
+                        {{ $project->github_link }}
+                    </a>
+                </dd>
+            @endif
+        </div>
+    </dl>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center">
         <div class="mb-4 w-1/3 ml-4 mr-16 text-justify mt-8 mb-8 break-words">
             {!! html_entity_decode($project->description) !!}
@@ -39,21 +54,6 @@
                         @endforeach
                     </div>
                 </div>
-                <dl>
-                    <div class="px-4 py-2 sm:grid sm:gap-4 sm:px-6">
-                        @if ($project->github_link)
-                            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                Github:
-                            </dt>
-                            <dd class="mt-1 text-sm text-gray-900 dark:text-gray-100 sm:mt-0 sm:col-span-2">
-                                <a href="{{ $project->github_link }}"
-                                   class="text-indigo-600 hover:text-indigo-900">
-                                    {{ $project->github_link }}
-                                </a>
-                            </dd>
-                        @endif
-                    </div>
-                </dl>
             </div>
         </div>
         <script>

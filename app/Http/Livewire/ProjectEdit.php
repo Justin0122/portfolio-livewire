@@ -19,8 +19,8 @@ class ProjectEdit extends Component
     public $github_link;
     public $photos = [];
     public $images = [];
-    public $active = false;
-    public $pinned = false;
+    public $active;
+    public $pinned;
 
     public function mount(Project $project)
     {
@@ -38,11 +38,13 @@ class ProjectEdit extends Component
         return view('livewire.project-edit', [
             'project' => $this->project,
             'images' => $this->images,
+            'photos' => $this->photos,
         ]);
     }
 
     public function edit($id)
     {
+
         $this->validate([
             'name' => 'required',
             'description' => 'required',
@@ -50,6 +52,10 @@ class ProjectEdit extends Component
             'active' => 'boolean',
             'pinned' => 'boolean',
         ]);
+
+        if ($this->pinned) {
+            $this->active = true;
+        }
 
         $project = Project::find($id);
         $projectName = strtolower(str_replace(' ', '-', $this->name));
@@ -79,12 +85,15 @@ class ProjectEdit extends Component
             }
         }
         session()->flash('message', 'Image added successfully.');
+        $this->emit('projectUpdated', true);
+
+        $this->photos = [];
+
         $project->update($data);
         $this->project = $project;
         $this->images = $project->getFiles($project);
         $this->render();
     }
-
 
     public function removePhoto($id, $photo)
     {
