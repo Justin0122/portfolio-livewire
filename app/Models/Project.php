@@ -10,17 +10,19 @@ class Project extends Model
     protected $fillable = [
         'name',
         'description',
+        'github_link',
         'start_date',
         'end_date',
         'status',
         'user_id',
+        'is_active',
+        'is_pinned',
     ];
 
     public static function create(array $data)
     {
         $project = new Project();
         $project->name = $data['name'];
-        $project->description = $data['description'];
         $project->save();
     }
 
