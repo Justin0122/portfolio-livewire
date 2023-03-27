@@ -11,7 +11,6 @@ class ProjectsTable extends Component
     public $selectAll = false;
 
     public $name;
-    public $description;
     public array $selectedProjects = [];
 
     public function mount()
@@ -30,17 +29,22 @@ class ProjectsTable extends Component
     {
         $this->validate([
             'name' => 'required',
-            'description' => 'required',
         ]);
 
         $data = [
             'name' => $this->name,
-            'description' => $this->description,
             'created_at' => now(),
             'updated_at' => now(),
         ];
 
         Project::create($data);
+        $this->projects = Project::all();
+    }
+
+    public function deleteProject($id)
+    {
+        $project = Project::find($id);
+        $project->delete();
         $this->projects = Project::all();
     }
 
@@ -52,5 +56,28 @@ class ProjectsTable extends Component
     public function toggle($id)
     {
 
+    }
+
+    public function togglePinned($id)
+    {
+        $project = Project::find($id);
+        $project->is_pinned = !$project->is_pinned;
+        if ($project->is_pinned) {
+            $project->is_active = true;
+        }
+        $project->save(['is_pinned', 'is_active']);
+        $this->projects = Project::all();
+    }
+
+
+    public function toggleActive($id)
+    {
+        $project = Project::find($id);
+        $project->is_active = !$project->is_active;
+        if (!$project->is_active) {
+            $project->is_pinned = false;
+        }
+        $project->save(['is_pinned', 'is_active']);
+        $this->projects = Project::all();
     }
 }

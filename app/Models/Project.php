@@ -23,7 +23,6 @@ class Project extends Model
     {
         $project = new Project();
         $project->name = $data['name'];
-        $project->description = $data['description'];
         $project->save();
     }
 

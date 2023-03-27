@@ -44,6 +44,7 @@ class ProjectEdit extends Component
 
     public function edit($id)
     {
+        session()->flash('status', 'project-updated');
 
         $this->validate([
             'name' => 'required',
@@ -84,7 +85,6 @@ class ProjectEdit extends Component
                 Storage::move($file, 'public/' . $project->id . '/' . $newName);
             }
         }
-        session()->flash('message', 'Image added successfully.');
         $this->emit('projectUpdated', true);
 
         $this->photos = [];

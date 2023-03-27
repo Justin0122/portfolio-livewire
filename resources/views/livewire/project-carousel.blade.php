@@ -28,14 +28,14 @@
                                 @endphp
                                 <img
                                     src="/storage/{{ $project->id }}/{{ strtolower($project->name) }}{{ $random }}.png"
-                                    class="w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                                    class="w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
                                 @php
                                     } else {
                                 @endphp
                                 <div class="w-80 h-40 flex items-center justify-center">
                                     <img
                                         src="/storage/default.png"
-                                        class="w-20 h-20 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                                        class="w-20 h-20 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
                                 </div>
                                 @php
                                     }
@@ -88,12 +88,13 @@
             },
             slideBy: 'page',
             autoplay: true,
-            controls: true,
+            controls: false,
             autoplayHoverPause: true,
             touch: true,
             arrowKeys: false,
             speed: 400,
-            nav: true,
+            nav: false,
+            autoplayButtonOutput: false,
         });
     </script>
 </div>
