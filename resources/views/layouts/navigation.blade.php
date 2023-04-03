@@ -19,12 +19,12 @@
                             {{ __('Projects') }}
                         </x-nav-link>
                     @endauth
-                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                    <x-anchor-link :href="route('dashboard') . '#about'">
                         {{ __('About') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
+                    </x-anchor-link>
+                    <x-anchor-link :href="route('dashboard') . '#contact'">
                         {{ __('Contact') }}
-                    </x-nav-link>
+                    </x-anchor-link>
                 </div>
             </div>
 
