@@ -5,9 +5,24 @@
                 $random = rand(1, 3);
             @endphp
             <div
-                class="item pr-4 pl-4 h-96 min-h-96">
-                <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
+                class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg h-full">
                     <div class="px-4 py-5 sm:px-6">
+                        @if ($project->created_at->diffInDays() <= 7)
+                            <div class="justify-end flex">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 dark:cursor-default">
+                                                New
+                                </span>
+                            </div>
+                        @else
+                            <div class="justify-end flex">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 cursor-default dark:bg-gray-800 dark:text-gray-100 dark:cursor-default">
+                                                {{ $project->created_at->diffForHumans() }}
+                                </span>
+                            </div>
+                        @endif
 
                         <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 truncate">
                             {{ $project->name }}
@@ -22,7 +37,7 @@
                     <div class="px-4 py-2 bg-gray-50 dark:bg-gray-800 sm:px-6 cursor-pointer"
                          onclick="window.location.href = '/project/{{ $project->id }}'">
                         <div class="content-center">
-                            <div class="flex items-center justify-center">
+                            <div class="flex items-center justify-center h-40 pb-4">
                                 @php
                                     if (file_exists('storage/' . $project->id)) {
                                 @endphp
@@ -42,28 +57,6 @@
                                 @endphp
                             </div>
                         </div>
-                    </div>
-                    <div class="border-t border-gray-200 dark:border-gray-700">
-                        <dl>
-                            <div
-                                class="bg-gray-50 dark:bg-gray-800 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                    Created at:
-                                </dt>
-                                <dd class="mt-1 text-sm text-gray-900 dark:text-gray-100 sm:mt-0 sm:col-span-2">
-                                    {{ $project->created_at }}
-                                </dd>
-                            </div>
-                            <div
-                                class="bg-white dark:bg-gray-800 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                    Updated at:
-                                </dt>
-                                <dd class="mt-1 text-sm text-gray-900 dark:text-gray-100 sm:mt-0 sm:col-span-2">
-                                    {{ $project->updated_at }}
-                                </dd>
-                            </div>
-                        </dl>
                     </div>
                 </div>
             </div>
@@ -95,6 +88,8 @@
             speed: 400,
             nav: false,
             autoplayButtonOutput: false,
+            mouseDrag: true,
         });
     </script>
+    <livewire:project-list/>
 </div>
