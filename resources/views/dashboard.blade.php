@@ -3,15 +3,28 @@
         <x-header>
             {{ __('Dashboard') }}
         </x-header>
-        <x-anchor-link href="#projects">
-            {{ __('Projects') }}
-        </x-anchor-link>
-        <x-anchor-link href="#about">
-            {{ __('About') }}
-        </x-anchor-link>
-        <x-anchor-link href="#contact">
-            {{ __('Contact') }}
-        </x-anchor-link>
+        <div class="lg:hidden xs:hidden sm:hidden">
+            <x-anchor-link href="#projects">
+                {{ __('Projects') }}
+            </x-anchor-link>
+            <x-anchor-link href="#about">
+                {{ __('About') }}
+            </x-anchor-link>
+            <x-anchor-link href="#contact">
+                {{ __('Contact') }}
+            </x-anchor-link>
+        </div>
+        @auth
+            <x-anchor-link href="#projects">
+                {{ __('Projects') }}
+            </x-anchor-link>
+            <x-anchor-link href="#about">
+                {{ __('About') }}
+            </x-anchor-link>
+            <x-anchor-link href="#contact">
+                {{ __('Contact') }}
+            </x-anchor-link>
+        @endauth
     </x-slot>
 
     <div class="py-12 text-gray-900 dark:text-gray-100">
