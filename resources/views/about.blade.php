@@ -1,4 +1,5 @@
-<div class=" mx-auto sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden pt-4 pb-4">
+<div
+    class=" mx-auto sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden pt-4 pb-4 pl-4 pr-4">
     <div class="flex flex-col justify-center">
         <h1 class="text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             About Me
