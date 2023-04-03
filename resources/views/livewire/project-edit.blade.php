@@ -171,24 +171,10 @@
             <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 sm:px-6">
                 <x-input-label for="description" :value="__('Description')"/>
                 <textarea
-                    class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full"
+                    class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full h-48"
                     id="description" wire:model.defer="description"></textarea>
                 @error('description') <span class="error">{{ $message }}</span> @enderror
             </div>
         </div>
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center">
-            <div class="mb-4 ml-8 mr-8 text-justify mt-8 mb-8 break-words">
-                <div class="preview">
-                    {!! html_entity_decode($project->description) !!}
-                </div>
-            </div>
-        </div>
     </div>
-
-    <script>
-        document.getElementById('description').addEventListener('keyup', function (e) {
-            let text = this.value;
-            document.querySelector('.preview').innerHTML = text.replace(/\n/g, "<br><br>");
-        });
-    </script>
 </div>
