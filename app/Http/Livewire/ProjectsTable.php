@@ -4,24 +4,27 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Project;
+use Livewire\WithPagination;
 
 class ProjectsTable extends Component
 {
-    public $projects;
+    use WithPagination;
+
     public $selectAll = false;
 
     public $name;
     public array $selectedProjects = [];
 
-    public function mount()
-    {
-        $this->projects = Project::all();
-    }
+    public $isOnMobile = false;
+
+    protected $listeners = [
+        'pageChanged' => 'gotoPage'
+    ];
 
     public function render()
     {
         return view('livewire.projects-table', [
-            'projects' => $this->projects,
+            'projects' => Project::paginate(10, ['*'], 'page', $this->page),
         ]);
     }
 
@@ -38,14 +41,14 @@ class ProjectsTable extends Component
         ];
 
         Project::create($data);
-        $this->projects = Project::all();
+        session()->flash('message', 'Project created successfully.');
     }
 
     public function deleteProject($id)
     {
         $project = Project::find($id);
         $project->delete();
-        $this->projects = Project::all();
+        session()->flash('message', 'Project deleted successfully.');
     }
 
     public function toggleAll()
@@ -66,7 +69,7 @@ class ProjectsTable extends Component
             $project->is_active = true;
         }
         $project->save(['is_pinned', 'is_active']);
-        $this->projects = Project::all();
+        session()->flash('message', 'Project updated successfully.');
     }
 
 
@@ -78,6 +81,11 @@ class ProjectsTable extends Component
             $project->is_pinned = false;
         }
         $project->save(['is_pinned', 'is_active']);
-        $this->projects = Project::all();
+        session()->flash('message', 'Project updated successfully.');
+    }
+
+    public function gotoPage($page)
+    {
+        $this->page = $page;
     }
 }

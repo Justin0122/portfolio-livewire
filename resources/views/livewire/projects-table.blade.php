@@ -1,5 +1,8 @@
 <div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg hidden md:block">
+        <div class="px-4 py-3 bg-white dark:bg-gray-800 dark:text-gray-300">
+            {{ $projects->links() }}
+        </div>
         <table class="text-left text-sm text-gray-500 dark:text-gray-400 w-full table-auto">
             <thead class="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -53,7 +56,8 @@
                     <td class="py-4 px-6" colspan="7">No projects found.</td>
                 </tr>
             @endif
-            @foreach ($projects as $project)
+
+            @foreach ($projects->items() as $project)
                 <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                     <td class="w-4 p-4">
                         <div class="flex items-center">
@@ -124,6 +128,9 @@
             @endforeach
             </tbody>
         </table>
+        <div>
+            {{ $projects->links() }}
+        </div>
     </div>
 
     <div class="w-full overflow-x-auto lg:hidden xs:hidden sm:hidden">
@@ -173,6 +180,9 @@
                 </li>
             @endforeach
         </ul>
+        <div class="footer">
+            {{ $projects->links() }}
+        </div>
 
         <div class="fixed bottom-0 right-0 mb-4 mr-4">
             <div class="flex flex-col" onclick="openModal()">
@@ -222,6 +232,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </form>
     </div>
 
@@ -265,4 +276,13 @@
         }
 
     </script>
+    @push('scripts')
+        <script>
+            document.addEventListener('livewire:load', function () {
+                Livewire.on('gotoPage', page => {
+                    Livewire.emit('pageChanged', page);
+                });
+            });
+        </script>
+    @endpush
 </div>
