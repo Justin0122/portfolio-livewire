@@ -19,6 +19,10 @@
                             {{ __('Projects') }}
                         </x-nav-link>
                     @endauth
+
+                    <x-anchor-link :href="route('dashboard') . '#projects'">
+                        {{ __('Projects') }}
+                    </x-anchor-link>
                     <x-anchor-link :href="route('dashboard') . '#about'">
                         {{ __('About') }}
                     </x-anchor-link>
