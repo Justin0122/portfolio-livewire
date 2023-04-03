@@ -5,10 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
-                        <div class="h-9 w-9">
-                            <x-application-logo/>
-                        </div>
+                    <a href="{{ route('home') }}" class="text-gray-500 dark:text-gray-400">
+                        Welcome
                     </a>
                 </div>
                 <!-- Navigation Links -->
