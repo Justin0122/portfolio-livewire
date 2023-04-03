@@ -13,10 +13,6 @@ class ProjectsTable extends Component
     public $selectAll = false;
 
     public $name;
-    public array $selectedProjects = [];
-
-    public $isOnMobile = false;
-
     protected $listeners = [
         'pageChanged' => 'gotoPage'
     ];
@@ -51,16 +47,6 @@ class ProjectsTable extends Component
         session()->flash('message', 'Project deleted successfully.');
     }
 
-    public function toggleAll()
-    {
-        $this->selectAll = !$this->selectAll;
-    }
-
-    public function toggle($id)
-    {
-
-    }
-
     public function togglePinned($id)
     {
         $project = Project::find($id);
@@ -82,10 +68,5 @@ class ProjectsTable extends Component
         }
         $project->save(['is_pinned', 'is_active']);
         session()->flash('message', 'Project updated successfully.');
-    }
-
-    public function gotoPage($page)
-    {
-        $this->page = $page;
     }
 }
