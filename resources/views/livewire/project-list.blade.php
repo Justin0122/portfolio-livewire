@@ -3,11 +3,11 @@
         <div class="badge-slider">
             @foreach ($projects as $project)
                 <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 dark:cursor-pointer mr-2 p-2 text-center"
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 dark:cursor-pointer mr-2 p-2 text-center project-badge"
                     style="user-select: none;"
                     onclick="window.location.href = '/project/{{ $project->id }}'"
-                    title=" {{ mb_substr_count($project->description, ' ') > 50 ? mb_substr($project->description, 0, 50) . '...' : $project->description }} ">
-                {{ $project->name }}
+                    title="{{ $project->name }} - {{ mb_substr_count($project->description, ' ') > 50 ? mb_substr($project->description, 0, 50) . '...' : $project->description }}">
+                    {{ mb_strlen($project->name) > 8 ? mb_substr($project->name, 0, 8) . '...' : $project->name }}
                 </span>
             @endforeach
         </div>
