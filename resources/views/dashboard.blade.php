@@ -13,6 +13,11 @@
             <x-anchor-link href="#contact">
                 {{ __('Contact') }}
             </x-anchor-link>
+            @auth
+                <x-anchor-link href="{{ route('snippets') }}">
+                    {{ __('Create snippet') }}
+                </x-anchor-link>
+            @endauth
         </div>
         @auth
             <div class="hidden lg:block xs:block sm:block">
@@ -24,6 +29,9 @@
                 </x-anchor-link>
                 <x-anchor-link href="#contact">
                     {{ __('Contact') }}
+                </x-anchor-link>
+                <x-anchor-link href="{{ route('snippets') }}">
+                    {{ __('Create snippet') }}
                 </x-anchor-link>
             </div>
         @endauth
