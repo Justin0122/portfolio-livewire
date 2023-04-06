@@ -50,8 +50,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
             <div class="text-center text-gray-600 dark:text-gray-400 font-bold text-gray-800 dark:text-gray-200 mt-32">
                 <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 font-extrabold"
-                    onclick="window.location.href = '/dashboard'">
-                    <x-primary-button>Dashboard</x-primary-button>
+                    onclick="window.location.href = '/home'">
+                    <x-primary-button>View more</x-primary-button>
                 </h3>
             </div>
             <div class="h-48 w-48">

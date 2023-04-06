@@ -11,14 +11,14 @@
                         @if ($project->created_at->diffInDays() <= 7)
                             <div class="justify-end flex">
                                 <span
-                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 dark:cursor-default">
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100">
                                                 New
                                 </span>
                             </div>
                         @else
                             <div class="justify-end flex">
                                 <span
-                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 cursor-default dark:bg-gray-800 dark:text-gray-100 dark:cursor-default">
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 cursor-default dark:bg-gray-800 dark:text-gray-100">
                                                 {{ $project->created_at->diffForHumans() }}
                                 </span>
                             </div>

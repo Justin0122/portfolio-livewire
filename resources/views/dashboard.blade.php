@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-header>
-            {{ __('Dashboard') }}
-        </x-header>
+        @auth
+            <x-header>
+                {{ __('Dashboard') }}
+            </x-header>
+        @endauth
         <div class="lg:hidden xs:hidden sm:hidden">
             <x-anchor-link href="#projects">
                 {{ __('Projects') }}
