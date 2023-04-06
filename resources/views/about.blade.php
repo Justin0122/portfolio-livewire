@@ -22,8 +22,6 @@
         </h3>
     </div>
     <livewire:about-carousel/>
-<<<<<<< HEAD
-=======
 
     <div class="flex flex-col justify-center">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -84,5 +82,4 @@
         </ul>
 
     </div>
->>>>>>> development
 </div>

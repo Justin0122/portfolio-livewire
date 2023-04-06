@@ -4,13 +4,7 @@
         <div class="flex flex-col justify-center items-center pb-4">
             <p class="text-xl text-center">If you would like to contact me, please send me an
                 <a href="mailto:justinjongstra8@gmail.com" class="text-blue-500 hover:text-blue-700">
-<<<<<<< HEAD
-                    email
-                </a>
-                , or send me a message on my socials.</p>
-=======
                     email</a>, or send me a message on my socials.</p>
->>>>>>> development
         </div>
         <div class="flex flex-col justify-center items-center">
             <div class="flex flex-row justify-center items-center space-x-4">
@@ -18,11 +12,7 @@
                 <a href="https://www.linkedin.com/in/justin-jongstra-11b873207/">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-<<<<<<< HEAD
-                        class="h-5 w-5"
-=======
                         class="h-8 w-8"
->>>>>>> development
                         fill="currentColor"
                         viewBox="0 0 24 24">
                         <path
@@ -33,11 +23,7 @@
                 <a href="https://github.com/Justin0122">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-<<<<<<< HEAD
-                        class="h-5 w-5"
-=======
                         class="h-8 w-8"
->>>>>>> development
                         fill="currentColor"
                         viewBox="0 0 24 24">
                         <path
@@ -49,11 +35,7 @@
                 <a href="https://www.instagram.com/justin._x3/">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-<<<<<<< HEAD
-                        class="h-5 w-5"
-=======
                         class="h-8 w-8"
->>>>>>> development
                         fill="currentColor"
                         viewBox="0 0 24 24">
                         <path

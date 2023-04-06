@@ -20,11 +20,7 @@ class ProjectsTable extends Component
         'pageChanged' => 'gotoPage'
     ];
 
-<<<<<<< HEAD
-    public function render()
-=======
     public function render(): View|\Illuminate\Foundation\Application|Factory|Application
->>>>>>> development
     {
         return view('livewire.projects-table', [
             'projects' => Project::paginate(10, ['*'], 'page', $this->page),
@@ -54,11 +50,7 @@ class ProjectsTable extends Component
         session()->flash('message', 'Project deleted successfully.');
     }
 
-<<<<<<< HEAD
-    public function togglePinned($id)
-=======
     public function togglePinned($id): void
->>>>>>> development
     {
         $project = Project::find($id);
         $project->is_pinned = !$project->is_pinned;
