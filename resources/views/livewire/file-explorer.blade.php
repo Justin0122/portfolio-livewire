@@ -127,7 +127,7 @@
                         <input type="hidden" name="snippetContent" id="snippetContent"
                                wire:model.defer="snippetContent">
 
-                        <button type="submit" class="dark:text-gray-200 text-gray-800 ml-96"
+                        <button type="submit" class="dark:text-gray-200 text-gray-800 ml-2"
                                 wire:click="updateSnippet({{ $selectedSnippet->id }})">
                             <input type="hidden" name="snippetId" value="{{ $selectedSnippet->id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 checkmark" fill="none"
@@ -142,7 +142,7 @@
 
             @endif
             <!-- monaco editor -->
-            <div id="container" class="editor w-full h-screen"
+            <div id="container" class="editor w-full h-screen overflow-hidden"
                  wire:ignore></div>
 
             <script src=" https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
