@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class About extends Model
 {
+
     public function getFiles()
     {
         $files = glob(public_path('about/*'));

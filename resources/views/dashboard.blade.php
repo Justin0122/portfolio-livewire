@@ -13,6 +13,7 @@
             <x-anchor-link href="#contact">
                 {{ __('Contact') }}
             </x-anchor-link>
+
             @auth
                 <x-anchor-link href="{{ route('snippets') }}">
                     {{ __('Create snippet') }}
@@ -42,7 +43,9 @@
              id="projects">
             <livewire:project-carousel/>
         </div>
+
         <div class="max-w-7xl mx-auto lg:px-8 pt-24 mb-24"
+
              id="about">
             @include('about')
         </div>
