@@ -29,11 +29,11 @@
     @endif
 
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
-        <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200 font-extrabold text-xl">
+        <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">
             Justin Jongstra <span class="text-gray-600 dark:text-gray-400">- Software Developer</span>
         </h1>
 
-        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 font-extrabold">
+        <h2 class="text-2xl text-gray-800 dark:text-gray-200 font-extrabold">
             Student at
             <a href="https://rijnijssel.nl"
                class="focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 underline hover:no-underline">
@@ -48,8 +48,8 @@
             forward to the future.
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-            <div class="text-center text-gray-600 dark:text-gray-400 font-bold text-gray-800 dark:text-gray-200 mt-32">
-                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 font-extrabold"
+            <div class="text-center text-gray-600 dark:text-gray-400 font-bold mt-32">
+                <h3 class="text-2xl text-gray-800 dark:text-gray-200 font-extrabold"
                     onclick="window.location.href = '/home'">
                     <x-primary-button>View more</x-primary-button>
                 </h3>
@@ -58,16 +58,9 @@
                 <x-application-logo class="block h-12 w-auto fill-current text-gray-600 dark:text-gray-400"/>
             </div>
         </div>
-
-        <div class=" text-center text-gray-600 dark:text-gray-400 font-bold text-gray-800 dark:text-gray-200">
-        </div>
-        <div class="text-center text-gray-600 dark:text-gray-400 mt-48">
-            <p class="text-sm text-gray-500 dark:text-gray-400">
-                Made with <a href="https://laravel.com"
-                             class="text-gray-900 dark:text-gray-200 underline hover:no-underline">Laravel</a>
-            </p>
-        </div>
     </div>
 </div>
+<x-footer/>
+
 </body>
 </html>
