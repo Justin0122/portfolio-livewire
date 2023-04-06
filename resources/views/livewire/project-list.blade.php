@@ -10,7 +10,7 @@
                     @if ($project->created_at->diffInDays() <= 7)
                         <div class="">
                                 <span
-                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100">
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100">
                                                 New
                                 </span>
                     </div>
@@ -29,8 +29,7 @@
                 </button>
                 <button
                     class="tns-controls__item tns-controls__item--next w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
-                    aria-label=" Next slide
-            ">>
+                    aria-label=" Next slide">>
                 </button>
             </div>
         @endif
