@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use App\Models\Project;
 use Livewire\WithPagination;
@@ -17,14 +20,14 @@ class ProjectsTable extends Component
         'pageChanged' => 'gotoPage'
     ];
 
-    public function render()
+    public function render(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         return view('livewire.projects-table', [
             'projects' => Project::paginate(10, ['*'], 'page', $this->page),
         ]);
     }
 
-    public function createProject()
+    public function createProject(): void
     {
         $this->validate([
             'name' => 'required',
@@ -40,14 +43,14 @@ class ProjectsTable extends Component
         session()->flash('message', 'Project created successfully.');
     }
 
-    public function deleteProject($id)
+    public function deleteProject($id): void
     {
         $project = Project::find($id);
         $project->delete();
         session()->flash('message', 'Project deleted successfully.');
     }
 
-    public function togglePinned($id)
+    public function togglePinned($id): void
     {
         $project = Project::find($id);
         $project->is_pinned = !$project->is_pinned;
@@ -59,7 +62,7 @@ class ProjectsTable extends Component
     }
 
 
-    public function toggleActive($id)
+    public function toggleActive($id): void
     {
         $project = Project::find($id);
         $project->is_active = !$project->is_active;

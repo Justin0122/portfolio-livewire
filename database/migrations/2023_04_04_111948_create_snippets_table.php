@@ -13,9 +13,9 @@ return new class extends Migration {
         Schema::create('snippets', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->string('language');
-            $table->string('visibility');
+            $table->foreignId('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->timestamps();
         });
     }

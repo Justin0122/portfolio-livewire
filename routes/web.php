@@ -48,4 +48,5 @@ Route::get('/snippets', function () {
     return view('snippets.snippets');
 })->name('snippets');
 
+
 require __DIR__ . '/auth.php';
