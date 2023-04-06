@@ -18,6 +18,9 @@
                         <x-nav-link :href="route('projects')" :active="request()->routeIs('projects')">
                             {{ __('Projects') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('snippets')" :active="request()->routeIs('snippets')">
+                            {{ __('Snippets') }}
+                        </x-nav-link>
                     @endauth
 
                     <x-anchor-link :href="route('dashboard') . '#projects'">

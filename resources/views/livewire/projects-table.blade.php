@@ -54,6 +54,7 @@
             @if ($projects->count() === 0)
                 <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                     <td class="py-4 px-6" colspan="7">No projects found.</td>
+                    <td></td>
                 </tr>
             @endif
 

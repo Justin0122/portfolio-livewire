@@ -44,4 +44,9 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/snippets', function () {
+    return view('snippets.snippets');
+})->name('snippets');
+
+
 require __DIR__ . '/auth.php';

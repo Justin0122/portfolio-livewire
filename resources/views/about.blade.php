@@ -22,4 +22,67 @@
         </h3>
     </div>
     <livewire:about-carousel/>
+<<<<<<< HEAD
+=======
+
+    <div class="flex flex-col justify-center">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            My Skills
+        </h1>
+        @php
+            $skills = ['PHP','C#','C++','Python','Laravel','Tailwind','SCSS',];
+            $personalSkills = ['Teamwork','Problem Solving','Creativity',];
+        @endphp
+
+        <div class="flex flex-wrap p-2">
+            @foreach ($skills as $skill)
+                <span
+                    class="px-2 inline-flex text-xs leading-5 font-semibold bg-purple-100 text-purple-800 cursor-default dark:bg-purple-800 dark:text-purple-100 mr-2 p-2 text-center justify-center rounded-md mb-2">
+            {{ $skill }}
+        </span>
+            @endforeach
+        </div>
+        <div class="flex flex-wrap p-2">
+            @foreach ($personalSkills as $skill)
+                <span
+                    class="px-2 inline-flex text-xs leading-5 font-semibold bg-pink-100 text-pink-800 cursor-default dark:bg-pink-800 dark:text-pink-100 mr-2 p-2 text-center justify-center rounded-md mb-2">
+            {{ $skill }}
+        </span>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="flex flex-col justify-center">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            My previous studies
+        </h1>
+        <ul class="list-disc list-inside">
+            <li>Vehicle engineering
+                <span
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">Kader</span>
+                <span
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-green-400 text-white cursor-default dark:bg-green-300 dark:text-green-900 text-center justify-center rounded-md">Graduated</span>
+            </li>
+            <li>Mechatronics
+                <span
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 3</span>
+                <span
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-green-400 text-white cursor-default dark:bg-green-300 dark:text-green-900 text-center justify-center rounded-md">Studied for 2 years</span>
+            </li>
+            <li>IT Systems and Devices All-Around Worker
+                <span
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 3</span>
+                <span
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-green-400 text-white cursor-default dark:bg-green-300 dark:text-green-900 text-center justify-center rounded-md">Graduated</span>
+            </li>
+            <li>Software development
+                <span
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 4</span>
+                <span
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-yellow-400 text-white cursor-default dark:bg-yellow-300 dark:text-yellow-900 text-center justify-center rounded-md">Still Studying</span>
+            </li>
+        </ul>
+
+    </div>
+>>>>>>> development
 </div>

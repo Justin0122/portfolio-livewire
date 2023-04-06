@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class About extends Model
 {
+<<<<<<< HEAD
     use HasFactory;
 
+=======
+>>>>>>> development
     public function getFiles()
     {
         $files = glob(public_path('about/*'));
