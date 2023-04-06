@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.helper.ie8.js"></script>
-    
+
 
     @livewireStyles
     @livewireScripts
@@ -41,6 +41,7 @@
     <main class="bg-gray-100 dark:bg-gray-900">
         {{ $slot }}
     </main>
+    <x-footer/>
 </div>
 
 </body>
