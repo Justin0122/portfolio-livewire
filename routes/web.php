@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +17,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+
+if (auth()->check()) {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+} else {
+    Route::get('/home', function () {
+        return view('dashboard');
+    })->name('home');
+}
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,9 +40,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//make a new route for the projects page
-Route::get('/projects', function () {
-    return view('projects.projects');
-})->middleware(['auth', 'verified'])->name('projects');
+Route::middleware('auth')->group(function () {
+    Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
+    Route::get('/projects/{project}/edit', [ProjectsController::class, 'edit'])->name('projects.edit');
+});
 
-require __DIR__.'/auth.php';
+Route::get('/project/{project}', [ProjectsController::class, 'show'])->name('projects.show');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/snippets', function () {
+    return view('snippets.snippets');
+})->name('snippets');
+
+
+require __DIR__ . '/auth.php';
