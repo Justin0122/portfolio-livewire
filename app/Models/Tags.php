@@ -23,7 +23,11 @@ class Tags extends Model
     {
         $tag = new Tags();
         $tag->name = $data['name'];
+        if (Tags::where('name', $tag->name)->exists()) {
+            return false;
+        }
         $tag->save();
+        return $tag;
     }
 
 
