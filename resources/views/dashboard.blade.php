@@ -46,7 +46,7 @@
             <livewire:project-carousel/>
         </div>
 
-        <div class="max-w-7xl mx-auto lg:px-8 pt-24 mb-24"
+        <div class="max-w-7xl mx-auto lg:px-8 pt-14"
 
              id="about">
             @include('about')
