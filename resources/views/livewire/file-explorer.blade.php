@@ -1,7 +1,15 @@
 <div>
     <div class="flex flex-row">
-        <div class="w-90 dark:bg-gray-800 bg-white shadow-md">
-            <ul class="list-none pl-4">
+        <div class="w-90 dark:bg-gray-800 bg-white shadow-md h-screen">
+            <button class="dark:text-gray-200 text-gray-800"
+                    onclick="toggleFileExplorer()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            <ul class="list-none pl-4 hidden md:block file-explorer" id="file-explorer">
                 <form wire:submit.prevent="createTag" method="POST" class="py-2 border-b border-gray-200">
                     @csrf
                     @method('POST')
@@ -101,7 +109,7 @@
                 @endforeach
             </ul>
         </div>
-        <div class="w-full bg-white dark:bg-gray-800 shadow-md">
+        <div class="w-full bg-white dark:bg-gray-800 shadow-md hidden md:block">
             @if ($selectedSnippet)
                 <div class="flex flex-row">
                     <form wire:submit.prevent="updateSnippet" method="POST"
@@ -139,6 +147,14 @@
 
             <script src=" https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
             <script>
+                function toggleFileExplorer() {
+                    const fileExplorer = document.getElementById("file-explorer");
+                    if (fileExplorer.style.display === "none") {
+                        fileExplorer.style.display = "block";
+                    } else {
+                        fileExplorer.style.display = "none";
+                    }
+                }
 
                 require.config({paths: {'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs'}});
 
