@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Project;
 
-use Illuminate\Contracts\Foundation\Application;
+use App\Models\Project;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Livewire\Component;
-use App\Models\Project;
 use Livewire\WithPagination;
 
 class ProjectsTable extends Component
@@ -14,16 +14,17 @@ class ProjectsTable extends Component
     use WithPagination;
 
     public $selectAll = false;
+    public $searchProjects = '';
 
     public $name;
     protected $listeners = [
         'pageChanged' => 'gotoPage'
     ];
 
-    public function render(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function render(): Factory|View|Application
     {
-        return view('livewire.projects-table', [
-            'projects' => Project::paginate(10, ['*'], 'page', $this->page),
+        return view('livewire.project.projects-table', [
+            'projects' => Project::where('name', 'like', '%' . $this->searchProjects . '%')->paginate(10, ['*'], 'page', $this->page),
         ]);
     }
 
@@ -40,14 +41,14 @@ class ProjectsTable extends Component
         ];
 
         Project::create($data);
-        session()->flash('message', 'Project created successfully.');
+        session()->flash('message', 'project created successfully.');
     }
 
     public function deleteProject($id): void
     {
         $project = Project::find($id);
         $project->delete();
-        session()->flash('message', 'Project deleted successfully.');
+        session()->flash('message', 'project deleted successfully.');
     }
 
     public function togglePinned($id): void
@@ -58,7 +59,7 @@ class ProjectsTable extends Component
             $project->is_active = true;
         }
         $project->save(['is_pinned', 'is_active']);
-        session()->flash('message', 'Project updated successfully.');
+        session()->flash('message', 'project updated successfully.');
     }
 
 
@@ -70,6 +71,6 @@ class ProjectsTable extends Component
             $project->is_pinned = false;
         }
         $project->save(['is_pinned', 'is_active']);
-        session()->flash('message', 'Project updated successfully.');
+        session()->flash('message', 'project updated successfully.');
     }
 }

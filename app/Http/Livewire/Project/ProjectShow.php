@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Project;
 
 use App\Models\Project;
 use Livewire\Component;
@@ -17,7 +17,7 @@ class ProjectShow extends Component
 
     public function render()
     {
-        return view('livewire.project-show', [
+        return view('livewire.project.project-show', [
             'project' => $this->projects,
         ]);
     }

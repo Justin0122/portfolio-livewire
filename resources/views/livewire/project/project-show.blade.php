@@ -18,18 +18,18 @@
                     @endif
                     @foreach ($images as $image)
                         <div class="item">
-                            @if (str_contains($image, strtolower($project->name) . $count) !== false)
+                            @if (str_contains($image, 'jpg') || str_contains($image, 'png') || str_contains($image, 'jpeg'))
                                 <div class="pl-4 pr-4">
                                     <img
                                         src="/storage/{{ $project->id }}/{{ $image }}"
-                                        class="w-full h-full object-cover rounded-lg shadow-md">
+                                        class="w-full h-full object-cover rounded-lg shadow-md"
+                                        alt=" {{ $project->title }} ">
                                 </div>
                                 @php
                                     $count++;
                                 @endphp
                             @endif
                         </div>
-
                     @endforeach
                 </div>
             </div>
@@ -38,7 +38,7 @@
     <dl>
     </dl>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center">
-        <div class="mb-4 ml-8 mr-8 text-justify mt-8 mb-8 break-words w-4/5">
+        <div class="mb-4 ml-8 mr-8 text-justify mt-8 break-words w-4/5">
             {!! html_entity_decode($project->description) !!}
         </div>
         <script>
