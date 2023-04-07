@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Project;
 
-use Livewire\Component;
 use App\Models\Project;
+use Livewire\Component;
 
 class ProjectCarousel extends Component
 {
@@ -16,7 +16,7 @@ class ProjectCarousel extends Component
 
     public function render()
     {
-        return view('livewire.project-carousel', [
+        return view('livewire.project.project-carousel', [
             'projects' => $this->projects,
         ]);
     }
