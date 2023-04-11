@@ -1,5 +1,8 @@
 <div>
     <span>
-        {{  $project->name }} ({{ $project->id }})
+        {{  $project->name }}
+        @auth()
+            ({{ $project->id }})
+        @endauth
     </span>
 </div>
