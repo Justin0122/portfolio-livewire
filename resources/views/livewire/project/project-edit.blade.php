@@ -78,7 +78,6 @@
                                           wire:model.defer="github_link"/>
                         </div>
                     </div>
-
                     <div class="save-button mt-4 mb-4">
                         <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 sm:px-6">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>

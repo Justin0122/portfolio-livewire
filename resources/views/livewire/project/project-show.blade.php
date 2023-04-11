@@ -22,7 +22,7 @@
                                 <div class="pl-4 pr-4">
                                     <img
                                         src="/storage/{{ $project->id }}/{{ $image }}"
-                                        class="w-full h-full object-cover rounded-lg shadow-md"
+                                        class="h-full object-cover rounded-lg shadow-md w-full"
                                         alt=" {{ $project->title }} ">
                                 </div>
                                 @php
@@ -31,6 +31,17 @@
                             @endif
                         </div>
                     @endforeach
+                </div>
+                <div class="tns-controls flex justify-center items-center mt-4 space-x-2"
+                     aria-label="Carousel Navigation">
+                    <button
+                        class="tns-controls__item tns-controls__item--prev w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        aria-label="Previous slide"><
+                    </button>
+                    <button
+                        class="tns-controls__item tns-controls__item--next w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        aria-label=" Next slide">>
+                    </button>
                 </div>
             </div>
         </div>
@@ -61,12 +72,12 @@
                 },
                 slideBy: 'page',
                 autoplay: true,
-                controls: false,
-                autoplayHoverPause: true,
+                controls: true,
                 touch: true,
                 arrowKeys: false,
-                speed: 400,
+                speed: 300,
                 nav: false,
+                controlsContainer: ".tns-controls",
             });
             document.querySelector('[data-action="stop"]').remove();
         </script>
