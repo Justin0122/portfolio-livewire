@@ -12,7 +12,9 @@
         <table class="text-left text-sm text-gray-500 dark:text-gray-400 w-full table-auto">
             <thead class="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="p-4"></th>
+                @auth
+                    <th scope="col" class="p-4"></th>
+                @endauth
                 <th scope="col" class="py-3 px-6">Title</th>
                 <th scope="col" class="py-3 px-6 hidden md:table-cell">Image</th>
                 @auth
@@ -71,15 +73,15 @@
             @foreach ($projects->items() as $project)
                 @if (Auth::check() || $project->is_active)
                     <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-{{ $project->id }}" type="checkbox"
-                                       class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-                                       value="{{ $project->id }}" wire:click="toggle({{ $project->id }})"/>
-                                <label for="checkbox-{{ $project->id }}" class="sr-only">checkbox</label>
-                            </div>
-                        </td>
                         @auth
+                            <td class="w-4 p-4">
+                                <div class="flex items-center">
+                                    <input id="checkbox-{{ $project->id }}" type="checkbox"
+                                           class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                                           value="{{ $project->id }}" wire:click="toggle({{ $project->id }})"/>
+                                    <label for="checkbox-{{ $project->id }}" class="sr-only">checkbox</label>
+                                </div>
+                            </td>
                             <td class="py-4 px-6 hover:cursor-pointer hover:text-blue-500 transition ease-in-out duration-300"
                                 onclick="window.location.href='/projects/{{ $project->id }}/edit'">{{ $project->name }}</td>
                         @else
