@@ -81,10 +81,10 @@
                         </td>
                         @auth
                             <td class="py-4 px-6 hover:cursor-pointer hover:text-blue-500 transition ease-in-out duration-300"
-                                onclick=" window.location.href='/projects/{{ $project->id }}/edit'">{{ $project->name }}</td>
+                                onclick="window.location.href='/projects/{{ $project->id }}/edit'">{{ $project->name }}</td>
                         @else
                             <td class="py-4 px-6 hover:cursor-pointer hover:text-blue-500 transition ease-in-out duration-300"
-                                onclick=" window.location.href='/project/{{ $project->id }}'">{{ $project->name }}</td>
+                                onclick="window.location.href='/project/{{ $project->id }}'">{{ $project->name }}</td>
                         @endauth
                         <td class="py-4 px-6 w-1/6 hidden md:table-cell">
                             <div class="flex flex-wrap">
