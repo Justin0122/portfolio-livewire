@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <x-header>
-            <livewire:project-header :project="$project"/>
+            <livewire:project.project-header :project="$project"/>
         </x-header>
     </x-slot>
 
