@@ -69,7 +69,6 @@
                 </tr>
             @endif
             @foreach ($projects->items() as $project)
-                <!-- if not auth, don't render the inavtive projects -->
                 @if (Auth::check() || $project->is_active)
                     <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                         <td class="w-4 p-4">
@@ -80,9 +79,13 @@
                                 <label for="checkbox-{{ $project->id }}" class="sr-only">checkbox</label>
                             </div>
                         </td>
-                        <td class="py-4 px-6 hover:cursor-pointer hover:text-blue-500 transition ease-in-out duration-300"
-                            onclick=" window.location.href='/projects/{{ $project->id }}/edit'
-                    ">{{ $project->name }}</td>
+                        @auth
+                            <td class="py-4 px-6 hover:cursor-pointer hover:text-blue-500 transition ease-in-out duration-300"
+                                onclick=" window.location.href='/projects/{{ $project->id }}/edit'">{{ $project->name }}</td>
+                        @else
+                            <td class="py-4 px-6 hover:cursor-pointer hover:text-blue-500 transition ease-in-out duration-300"
+                                onclick=" window.location.href='/project/{{ $project->id }}'">{{ $project->name }}</td>
+                        @endauth
                         <td class="py-4 px-6 w-1/6 hidden md:table-cell">
                             <div class="flex flex-wrap">
                                 @php
