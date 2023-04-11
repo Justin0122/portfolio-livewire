@@ -59,6 +59,20 @@
             </div>
         @endforeach
     </div>
+    @if (count($projects) > 3)
+        <div class="tns-controls flex justify-center items-center mt-4 space-x-2"
+             aria-label="Carousel Navigation">
+            <button
+                class="tns-controls__item tns-controls__item--prev w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
+                aria-label="Previous slide"><
+            </button>
+            <button
+                class="tns-controls__item tns-controls__item--next w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
+                aria-label=" Next slide">>
+            </button>
+        </div>
+    @endif
+
     <script>
         var slider = tns({
             container: '.my-slider',
@@ -78,14 +92,16 @@
             },
             slideBy: 'page',
             autoplay: true,
-            controls: false,
+            controls: true,
             autoplayHoverPause: true,
             touch: true,
             arrowKeys: false,
-            speed: 400,
+            speed: 200,
             nav: false,
             autoplayButtonOutput: false,
             mouseDrag: true,
+            loop: true,
+            controlsContainer: ".tns-controls",
         });
     </script>
     <livewire:project.project-list/>

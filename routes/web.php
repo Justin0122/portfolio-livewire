@@ -39,9 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
 Route::middleware('auth')->group(function () {
-    Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
     Route::get('/projects/{project}/edit', [ProjectsController::class, 'edit'])->name('projects.edit');
 });
 

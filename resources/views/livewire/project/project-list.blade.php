@@ -20,7 +20,7 @@
             @endforeach
         </div>
 
-        @if (count($projects) > 0)
+        @if (count($projects) > 12)
             <div class="tns-controls flex justify-center items-center mt-4 space-x-2"
                  aria-label="Carousel Navigation">
                 <button
@@ -37,7 +37,7 @@
     <script>
         var slider = tns({
             container: '.badge-slider',
-            items: 3,
+            items: 12,
             responsive: {
                 640: {
                     edgePadding: 20,
@@ -48,7 +48,7 @@
                     gutter: 6
                 },
                 900: {
-                    items: 13
+                    items: 10
                 }
             },
             slideBy: 'page',
@@ -61,9 +61,15 @@
             nav: false,
             autoplayButtonOutput: false,
             mouseDrag: true,
-            loop: true,
+            loop: false,
             controlsContainer: ".tns-controls",
         });
     </script>
+    <div class="flex justify-center mt-4">
+        <a href="{{ route('projects') }}"
+           class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+            View all projects
+        </a>
+    </div>
 </div>
 
