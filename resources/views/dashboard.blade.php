@@ -33,9 +33,6 @@
                 <x-anchor-link href="#contact">
                     {{ __('Contact') }}
                 </x-anchor-link>
-                <x-anchor-link href="{{ route('snippets') }}">
-                    {{ __('Create snippet') }}
-                </x-anchor-link>
             </div>
         @endauth
     </x-slot>
@@ -43,7 +40,7 @@
     <div class="py-12 text-gray-900 dark:text-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 h-screen pt-24 mb-24"
              id="projects">
-            <livewire:project-carousel/>
+            <livewire:project.project-carousel/>
         </div>
 
         <div class="max-w-7xl mx-auto lg:px-8 pt-14"

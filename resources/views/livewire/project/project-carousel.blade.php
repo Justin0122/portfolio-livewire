@@ -91,5 +91,5 @@
             mouseDrag: true,
         });
     </script>
-    <livewire:project-list/>
+    <livewire:project.project-list/>
 </div>

@@ -22,16 +22,6 @@
                             {{ __('Snippets') }}
                         </x-nav-link>
                     @endauth
-
-                    <x-anchor-link :href="route('home') . '#projects'">
-                        {{ __('Projects') }}
-                    </x-anchor-link>
-                    <x-anchor-link :href="route('home') . '#about'">
-                        {{ __('About') }}
-                    </x-anchor-link>
-                    <x-anchor-link :href="route('home') . '#contact'">
-                        {{ __('Contact') }}
-                    </x-anchor-link>
                 </div>
             </div>
 
