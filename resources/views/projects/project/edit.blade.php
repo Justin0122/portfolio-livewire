@@ -2,7 +2,7 @@
     <x-slot name="header">
         <x-header>
             Editing
-            <livewire:project-header :project="$project"/>
+            <livewire:project.project-header :project="$project"/>
         </x-header>
     </x-slot>
 

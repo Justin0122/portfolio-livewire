@@ -1,9 +1,6 @@
 <div>
     <div class="my-slider">
         @foreach ($projects as $project)
-            @php
-                $random = rand(1, 3);
-            @endphp
             <div
                 class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg shadow-lg overflow-hidden">
                 <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg h-full">
@@ -42,7 +39,7 @@
                                     if (file_exists('storage/' . $project->id)) {
                                 @endphp
                                 <img
-                                    src="/storage/{{ $project->id }}/{{ strtolower($project->name) }}{{ $random }}.png"
+                                    src="/storage/{{ $project->id }}/{{ strtolower($project->name) }}1.png"
                                     class="w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
                                 @php
                                     } else {

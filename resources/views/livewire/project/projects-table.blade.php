@@ -4,7 +4,7 @@
             {{ $projects->links() }}
             <label>
                 <input type="text"
-                       class="border-2 border-gray-300 p-2 rounded-lg"
+                       class="border-2 border-gray-300 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
                        placeholder="Search projects..."
                        wire:model="searchProjects"/>
             </label>
@@ -31,7 +31,7 @@
                     <td class="py-4 px-6">
                         <label>
                             <input type="text"
-                                   class="w-full border-2 border-gray-300 p-2 rounded-lg"
+                                   class="w-full border-2 border-gray-300 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
                                    name="name" wire:model.defer="name"/>
                         </label>
                         @error ('name') <span class="text-red-500">{{ $message }}</span> @enderror
