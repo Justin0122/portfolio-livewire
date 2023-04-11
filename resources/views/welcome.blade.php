@@ -39,7 +39,6 @@
                class="focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 underline hover:no-underline">
                 <span class="text-orange-400 dark:text-orange-500">Rijn</span><span
                     class="text-purple-400 dark:text-purple-500">IJssel</span></a>
-            </span>
         </h2>
 
         <p class="text-gray-600 dark:text-gray-400 mt-8 w-3/4 text-xl">
@@ -48,13 +47,13 @@
             forward to the future.
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-            <div class="text-center text-gray-600 dark:text-gray-400 font-bold mt-32">
+            <div class="text-center text-gray-600 dark:text-gray-400 font-bold sm:mt-0 lg:mt-32">
                 <h3 class="text-2xl text-gray-800 dark:text-gray-200 font-extrabold"
                     onclick="window.location.href = '/home'">
                     <x-primary-button>View more</x-primary-button>
                 </h3>
             </div>
-            <div class="h-48 w-48">
+            <div class="h-48 w-48 hidden sm:block">
                 <x-application-logo class="block h-12 w-auto fill-current text-gray-600 dark:text-gray-400"/>
             </div>
         </div>
