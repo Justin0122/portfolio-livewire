@@ -1,13 +1,13 @@
 <div>
-    <div class="about-slider bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <div class="about-slider bg-gray-100 dark:bg-gray-800 overflow-hidden">
         @foreach ($images as $image)
             <div
-                class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg shadow-lg overflow-hidden">
-                <div class="shadow overflow-hidden sm:rounded-lg h-full">
+                class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg overflow-hidden">
+                <div class="overflow-hidden sm:rounded-lg h-full">
                     <div class="content-center">
-                        <div class="flex items-center justify-center items-center">
+                        <div class="flex items-center justify-center">
                             <img src="about/{{ $image }}"
-                                 class="w-auto h-72 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg mt-4 mb-4">
+                                 class="w-auto h-72 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md rounded-lg mt-4 mb-4">
                         </div>
                     </div>
                 </div>

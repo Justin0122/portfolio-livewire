@@ -2,7 +2,7 @@
     <div class="my-slider">
         @foreach ($projects as $project)
             <div
-                class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg shadow-lg overflow-hidden">
+                class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg overflow-hidden transition duration-500 ease-in-out">
                 <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg h-full">
                     <div class="px-4 py-5 sm:px-6">
                         @if ($project->created_at->diffInDays() <= 7)
