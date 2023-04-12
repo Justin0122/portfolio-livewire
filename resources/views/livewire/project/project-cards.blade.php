@@ -7,6 +7,16 @@
                           wire:model="searchProjects"/>
         </label>
     </div>
+    <div class="flex justify-center items-center mb-4">
+        @if ($projects->count() === 0)
+            <div class="flex justify-center items-center">
+                <div class="text-center">
+                    <h1 class="text-2xl font-bold text-gray-700 dark:text-gray-300">No projects found</h1>
+                    <p class="text-gray-500 dark:text-gray-400">Try searching for something else</p>
+                </div>
+            </div>
+        @endif
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-40">
         @foreach ($projects as $project)
             <div
