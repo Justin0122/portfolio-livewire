@@ -4,11 +4,12 @@
             {{ $projects->links() }}
             <label>
                 <input type="text"
-                       class="border-2 border-gray-300 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
+                       class="border-2 border-gray-300 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-300 md:w-1/4 w-full my-2"
                        placeholder="Search projects..."
                        wire:model="searchProjects"/>
             </label>
         </div>
+
         <table class="text-left text-sm text-gray-500 dark:text-gray-400 w-full table-auto">
             <thead class="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -29,11 +30,8 @@
                 <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600 hidden md:table-row">
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6">
-                        <label>
-                            <input type="text"
-                                   class="w-full border-2 border-gray-300 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
-                                   name="name" wire:model.defer="name"/>
-                        </label>
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" wire:model="name"
+                                      :value="old('name')" required autofocus/>
                         @error ('name') <span class="text-red-500">{{ $message }}</span> @enderror
                     </td>
                     <td class="py-4 px-6"></td>
@@ -42,15 +40,9 @@
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6 flex flex-row space-x-2 justify-center">
-                        <x-primary-button type="submit" class="w-12 h-12 flex items-center justify-center">
-                            <svg
-                                class="hover:scale-110 transform transition duration-500 cursor-pointer"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M12 4v16m8-8H4"></path>
-                            </svg>
-                        </x-primary-button>
+                        <x-secondary-button type="submit" class="w-1/4 flex justify-center items-center text-xl">
+                            +
+                        </x-secondary-button>
                     </td>
                 </tr>
             </form>
