@@ -28,7 +28,6 @@ return new class extends Migration {
             array(
                 'title' => 'projects',
                 'anchor' => '1',
-                'visibility' => '1',
             )
         );
         DB::table('pages')->insert(
@@ -46,7 +45,6 @@ return new class extends Migration {
         DB::table('pages')->insert(
             array(
                 'title' => 'projects',
-                'visibility' => '1',
             )
         );
         DB::table('pages')->insert(
