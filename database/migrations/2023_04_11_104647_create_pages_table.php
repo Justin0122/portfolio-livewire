@@ -46,7 +46,7 @@ return new class extends Migration {
         DB::table('pages')->insert(
             array(
                 'title' => 'projects',
-                'visibility' => '2',
+                'visibility' => '1',
             )
         );
         DB::table('pages')->insert(
