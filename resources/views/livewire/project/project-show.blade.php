@@ -14,7 +14,7 @@
                                     <div class="pl-4 pr-4">
                                         <img
                                             src="/storage/{{ $project->id }}/{{ $image }}"
-                                            class="h-full object-cover rounded-lg shadow-md w-full"
+                                            class="h-full object-contain rounded-lg w-full transition-shadow duration-300 ease-in-out"
                                             style="max-height: 500px"
                                             alt=" {{ $project->title }} ">
                                     </div>

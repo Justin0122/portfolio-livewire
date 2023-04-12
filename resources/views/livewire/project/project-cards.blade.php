@@ -20,8 +20,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-40">
         @foreach ($projects as $project)
             <div
-                class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg shadow-lg overflow-hidden">
-                <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg h-full">
+                class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg h-full">
                     <div class="px-4 py-5 sm:px-6">
                         @if ($project->created_at->diffInDays() <= 7)
                             <div class="justify-end flex">

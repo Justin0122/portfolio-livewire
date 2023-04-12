@@ -177,7 +177,7 @@
         </div>
     </div>
     <iframe src="{{ route('projects.show', $project) }}" wire:ignore.self
-            class="w-full h-screen mt-4 mb-4 border-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"></iframe>
+            class="w-full h-screen border-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-sm"></iframe>
 
     <script>
         window.livewire.on('projectUpdated', () => {
