@@ -7,7 +7,19 @@
 
     <div class="p-2 sm:px-6 sm:py-8 lg:px-96">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <livewire:project.projects-table/>
+            @auth
+                <livewire:project.projects-table/>
+            @endauth
+            @guest
+                <livewire:project.project-cards/>
+                <script type="text/javascript">
+                    window.onscroll = function (ev) {
+                        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                            window.livewire.emit('load-more');
+                        }
+                    };
+                </script>
+            @endguest
         </div>
     </div>
 

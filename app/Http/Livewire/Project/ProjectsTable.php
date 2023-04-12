@@ -17,9 +17,6 @@ class ProjectsTable extends Component
     public $searchProjects = '';
 
     public $name;
-    protected $listeners = [
-        'pageChanged' => 'gotoPage'
-    ];
 
     public function render(): Factory|View|Application
     {

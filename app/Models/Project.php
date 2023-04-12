@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\Request;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -19,19 +19,19 @@ class Project extends Model
         'is_pinned',
     ];
 
-    public static function create(array $data)
+    public static function create(array $data): void
     {
         $project = new Project();
         $project->name = $data['name'];
         $project->save();
     }
 
-    public function getProjects()
+    public function getProjects(): Collection
     {
         return $this->all();
     }
 
-    public function getFiles(Project $project)
+    public function getFiles(Project $project): bool|array
     {
         if (file_exists(storage_path('app/public/' . $project->id))) {
             $files = scandir(storage_path('app/public/' . $project->id));
