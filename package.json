@@ -19,5 +19,8 @@
         "monaco-editor": "^0.36.1",
         "requirejs": "^2.3.6",
         "tiny-slider": "^2.9.4"
+    },
+    "frameworks": {
+        "laravel": "10.3"
     }
 }
