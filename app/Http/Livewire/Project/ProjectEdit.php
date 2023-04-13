@@ -118,12 +118,17 @@ class ProjectEdit extends Component
         $languageIds = $this->getLanguageIds($languageNames);
 
         $this->project->languages()->sync($languageIds);
+        try{
         $frameworks = $client->api('repo')->contents()->show('Justin0122', $repo, 'package.json');
-        $frameworkNames = $this->getFrameworkNames($frameworks);
+            $frameworkNames = $this->getFrameworkNames($frameworks);
 
-        $frameworkIds = $this->getFrameworkIds($frameworkNames);
+            $frameworkIds = $this->getFrameworkIds($frameworkNames);
 
-        $this->project->frameworks()->sync($frameworkIds);
+            $this->project->frameworks()->sync($frameworkIds);
+        } catch (Exception $e) {
+            $this->project->frameworks()->sync([]);
+        }
+
     }
 
 
