@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Project;
 use App\Models\Framework;
 use App\Models\Language;
 use App\Models\Project;
+use Exception;
 use Github\Client;
 use Github\HttpClient\Builder;
 use Illuminate\Support\Facades\Storage;
@@ -111,22 +112,57 @@ class ProjectEdit extends Component
         $client = new Client();
         $client->authenticate(env('GITHUB_TOKEN'), null, Client::AUTH_ACCESS_TOKEN);
 
-        // Retrieve the languages used in the repository
         $languages = $client->api('repo')->languages('Justin0122', $repo);
         $languageNames = array_keys($languages);
 
-        //get the language ids from the database
+        $languageIds = $this->getLanguageIds($languageNames);
+
+        $this->project->languages()->sync($languageIds);
+        $frameworks = $client->api('repo')->contents()->show('Justin0122', $repo, 'package.json');
+        $frameworkNames = $this->getFrameworkNames($frameworks);
+
+        $frameworkIds = $this->getFrameworkIds($frameworkNames);
+
+        $this->project->frameworks()->sync($frameworkIds);
+    }
+
+
+    public function getLanguageIds($languages): array
+    {
         $languageIds = [];
-        foreach ($languageNames as $languageName) {
-            $language = Language::where('name', $languageName)->first();
+        foreach ($languages as $language) {
+            $language = Language::where('name', $language)->first();
             if ($language) {
                 $languageIds[] = $language->id;
             }
         }
+        return $languageIds;
+    }
 
-        //insert the language and framework ids into the pivot table
-        $this->project->languages()->sync($languageIds);
-//        $this->project->frameworks()->sync($frameworkIds);
+
+    public function getFrameworkIds($frameworks): array
+    {
+        $frameworkIds = [];
+        foreach ($frameworks as $framework) {
+            $framework = Framework::where('name', $framework)->first();
+            if ($framework) {
+                $frameworkIds[] = $framework->id;
+            }
+        }
+        return $frameworkIds;
+    }
+
+    public function getFrameworkNames($frameworks): array
+    {
+        $frameworks = json_decode(base64_decode($frameworks['content']));
+        $frameworkNames = [];
+        if (isset($frameworks->frameworks)) {
+            foreach (get_object_vars($frameworks->frameworks) as $name => $version) {
+                $frameworkNames[] = $name;
+            }
+        }
+
+        return $frameworkNames;
     }
 
 
