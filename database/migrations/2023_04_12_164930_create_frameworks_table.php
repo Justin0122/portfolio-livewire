@@ -18,16 +18,16 @@ return new class extends Migration {
 
         $frameworks = array(
             'Laravel',
-            'Vue.js',
-            'React.js',
+            'Vue',
+            'React',
             'Bootstrap',
             'Tailwind',
             'jQuery',
-            'Node.js',
-            'Express.js',
+            'Node',
+            'Express',
             'Flask',
             'Livewire',
-            'Inertia.js',
+            'Inertia',
             'Nuxt.js',
             'Next.js',
         );
