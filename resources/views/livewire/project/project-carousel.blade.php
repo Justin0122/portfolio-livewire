@@ -63,7 +63,7 @@
                             @endif
                         @endforeach
                         @foreach ($project->frameworks as $index => $framework)
-                            @if($index < 2)
+                            @if($index < 1)
                                 <span
                                     class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 mr-2 text-center justify-center rounded-md mb-2">
                                     {{ $framework->name }}
@@ -74,7 +74,8 @@
                         <!-- if the count is more than 2, show "and more" -->
                         @if(count($project->languages) > 2 || count($project->frameworks) > 2)
                             <span
-                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-gray-100 text-gray-800 cursor-default dark:bg-gray-800 dark:text-gray-100 mr-2 text-center justify-center rounded-md mb-2">
+                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100 mr-2 text-center justify-center rounded-md mb-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 ease-in-out"
+                                onclick="window.location.href = '/project/{{ $project->id }}'">
                                 and more
                             </span>
                         @endif

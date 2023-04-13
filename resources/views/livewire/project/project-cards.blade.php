@@ -49,7 +49,7 @@
                         </p>
                     </div>
 
-                    <div class="px-4 py-2 bg-gray-50 dark:bg-gray-800 sm:px-6 cursor-pointer"
+                    <div class="px-4 py-2 dark:bg-gray-800 sm:px-6 cursor-pointer"
                          onclick="window.location.href = '/project/{{ $project->id }}'">
                         <div class="content-center">
                             <div class="flex items-center justify-center h-40 pb-4">
