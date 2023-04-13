@@ -2,7 +2,11 @@
 
 namespace App\Http\Livewire\Project;
 
+use App\Models\Framework;
+use App\Models\Language;
 use App\Models\Project;
+use Github\Client;
+use Github\HttpClient\Builder;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -67,6 +71,11 @@ class ProjectEdit extends Component
             'is_pinned' => $this->pinned,
         ];
 
+        //if the github link is not empty, update the project with the github api
+        if ($this->github_link) {
+            $this->updateWithGithubApi($this->github_link);
+        }
+
         if ($this->photos) {
             foreach ($this->photos as $photo) {
                 $imageCount++;
@@ -89,8 +98,37 @@ class ProjectEdit extends Component
         $project->update($data);
         $this->project = $project;
         $this->images = $project->getFiles($project);
+
         $this->render();
     }
+
+    public function updateWithGithubApi($githubLink): void
+    {
+        $urlParts = parse_url($githubLink);
+        $pathInfo = pathinfo($urlParts['path']);
+        $repo = $pathInfo['basename'];
+
+        $client = new Client();
+        $client->authenticate(env('GITHUB_TOKEN'), null, Client::AUTH_ACCESS_TOKEN);
+
+        // Retrieve the languages used in the repository
+        $languages = $client->api('repo')->languages('Justin0122', $repo);
+        $languageNames = array_keys($languages);
+
+        //get the language ids from the database
+        $languageIds = [];
+        foreach ($languageNames as $languageName) {
+            $language = Language::where('name', $languageName)->first();
+            if ($language) {
+                $languageIds[] = $language->id;
+            }
+        }
+
+        //insert the language and framework ids into the pivot table
+        $this->project->languages()->sync($languageIds);
+//        $this->project->frameworks()->sync($frameworkIds);
+    }
+
 
     public function removePhoto($id, $photo)
     {

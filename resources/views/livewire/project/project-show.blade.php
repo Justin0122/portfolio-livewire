@@ -42,6 +42,21 @@
         </div>
     @endif
 
+    <div class="my-4 flex flex-wrap space-x-2 justify-center">
+        @foreach ($project->languages as $index => $language)
+            <span
+                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-pink-100 text-pink-800 cursor-default dark:bg-pink-800 dark:text-pink-100 mr-2 text-center justify-center rounded-md mb-2">
+                {{ $language->name }}
+            </span>
+        @endforeach
+        @foreach ($project->frameworks as $index => $framework)
+            <span
+                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 mr-2 text-center justify-center rounded-md mb-2">
+                {{ $framework->name }}
+            </span>
+        @endforeach
+    </div>
+
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center">
         <div class="mb-4 ml-8 mr-8 text-justify mt-8 break-words w-4/5">
             {!! html_entity_decode($project->description) !!}
