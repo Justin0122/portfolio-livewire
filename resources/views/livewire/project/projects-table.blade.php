@@ -74,14 +74,20 @@
                     <td class="py-4 px-6 w-1/6 hidden md:table-cell">
                         <div class="flex flex-wrap">
                             @foreach ($project->languages as $language)
-                                <x-badge color="blue">{{ $language->name }}</x-badge>
+                                <span
+                                    class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-pink-100 text-pink-800 cursor-default dark:bg-pink-800 dark:text-pink-100 mr-2 text-center justify-center rounded-md mb-2">
+                                    {{ $language->name }}
+                                </span>
                             @endforeach
                         </div>
                     </td>
                     <td class="py-4 px-6 w-1/6 hidden md:table-cell">
                         <div class="flex flex-wrap">
                             @foreach ($project->frameworks as $framework)
-                                <x-badge color="blue">{{ $framework->name }}</x-badge>
+                                <span
+                                    class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 mr-2 text-center justify-center rounded-md mb-2">
+                                    {{ $framework->name }}
+                                </span>
                             @endforeach
                         </div>
                     </td>
