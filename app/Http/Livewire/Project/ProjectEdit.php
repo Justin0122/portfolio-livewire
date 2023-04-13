@@ -112,7 +112,11 @@ class ProjectEdit extends Component
         $client = new Client();
         $client->authenticate(env('GITHUB_TOKEN'), null, Client::AUTH_ACCESS_TOKEN);
 
-        $languages = $client->api('repo')->languages('Justin0122', $repo);
+        try {
+            $languages = $client->api('repo')->languages('Justin0122', $repo);
+        } catch (Exception $e) {
+            $languages = [];
+        }
         $languageNames = array_keys($languages);
 
         $languageIds = $this->getLanguageIds($languageNames);

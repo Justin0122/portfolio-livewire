@@ -21,7 +21,15 @@ class ProjectsTable extends Component
     public function render()
     {
         $projects = Project::with('languages', 'frameworks')
-            ->where('name', 'like', '%' . $this->searchProjects . '%')
+            ->where(function ($query) {
+                $query->where('name', 'like', '%' . $this->searchProjects . '%')
+                    ->orWhereHas('languages', function ($query) {
+                        $query->where('name', 'like', '%' . $this->searchProjects . '%');
+                    })
+                    ->orWhereHas('frameworks', function ($query) {
+                        $query->where('name', 'like', '%' . $this->searchProjects . '%');
+                    });
+            })
             ->paginate(10, ['*'], 'page', $this->page);
 
         return view('livewire.project.projects-table', [
