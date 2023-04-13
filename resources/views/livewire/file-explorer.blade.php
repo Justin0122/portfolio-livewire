@@ -1,4 +1,14 @@
 <div>
+    <script>
+        function toggleFileExplorer() {
+            const fileExplorer = document.getElementById("file-explorer");
+            if (fileExplorer.style.display === "none") {
+                fileExplorer.style.display = "block";
+            } else {
+                fileExplorer.style.display = "none";
+            }
+        }
+    </script>
     <div class="flex flex-row">
         <div class="w-90 dark:bg-gray-800 bg-white shadow-md h-screen">
             <button class="dark:text-gray-200 text-gray-800"
@@ -145,78 +155,7 @@
             <div id="container" class="editor w-full h-screen overflow-hidden"
                  wire:ignore></div>
 
-            <script src=" https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
-            <script>
-                function toggleFileExplorer() {
-                    const fileExplorer = document.getElementById("file-explorer");
-                    if (fileExplorer.style.display === "none") {
-                        fileExplorer.style.display = "block";
-                    } else {
-                        fileExplorer.style.display = "none";
-                    }
-                }
-
-                require.config({paths: {'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs'}});
-
-                function replaceEditorContents(text, language) {
-                    text = decodeURIComponent(text);
-                    window.editor.executeEdits("", [
-                        {
-                            range: editor.getModel().getFullModelRange(),
-                            text: text,
-                        }
-                    ]);
-                    window.editor.setSelection(new monaco.Selection(0, 0, 0, 0));
-                    window.editor.focus();
-                    if (language === "") {
-                        language = "plaintext";
-                    }
-                    const languageMap = {
-                        js: 'javascript',
-                        py: 'python',
-                        sh: 'shell',
-                    }
-
-                    if (languageMap[language]) {
-                        language = languageMap[language];
-                    }
-
-                    monaco.editor.setModelLanguage(window.editor.getModel(), language);
-                }
-
-                require(['vs/editor/editor.main'], function () {
-                    if (window.editor) return
-
-                    window.editor = monaco.editor.create(document.getElementById('container'), {
-                        value: "",
-                        language: "",
-                        theme: 'vs-dark',
-                        automaticLayout: true,
-                        minimap: {
-                            enabled: true,
-                        },
-                        scrollBeyondLastLine: false,
-                        wordWrap: 'on',
-                        wordWrapColumn: 80,
-                        wrappingIndent: 'indent',
-                        lineNumbers: 'on',
-                    });
-                });
-
-                window.editor.onDidChangeModelContent(function (e) {
-                    var content = window.editor.getValue();
-                    var encodedContent = encodeURIComponent(content);
-                    document.getElementById('snippetContent').value = encodedContent;
-                    var input = document.getElementById('snippetContent');
-                    var event = new Event('input', {bubbles: true});
-                    input.dispatchEvent(event);
-
-                    var checkmark = document.getElementsByClassName('checkmark')[0];
-                    checkmark.style.color = 'red';
-                });
-
-
-            </script>
+            @vite('resources/js/monacoEditor.js')
         </div>
     </div>
     <script>
