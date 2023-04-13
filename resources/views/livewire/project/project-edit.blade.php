@@ -154,7 +154,7 @@
                                 <img src="/storage/{{ $project->id }}/{{ $file }}" class="w-40 h-20 object-cover"
                                      alt="">
                                 {{ $file }} <br> [Saved]
-                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded"
                                         wire:click="removePhoto({{ $project->id }}, '{{ $file }}')">
                                     Remove
                                 </button>
@@ -165,6 +165,7 @@
             @endif
         </div>
     </div>
+
     <div class="p-2 w-auto sm:py-4">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 sm:px-6">

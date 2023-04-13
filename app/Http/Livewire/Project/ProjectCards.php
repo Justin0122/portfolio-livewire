@@ -4,6 +4,9 @@ namespace App\Http\Livewire\Project;
 
 use Livewire\Component;
 use App\Models\Project;
+use App\Models\Framework;
+use App\Models\Language;
+use App\Models\ProjectTags;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -24,10 +27,14 @@ class ProjectCards extends Component
     }
 
 
-    public function render(): Factory|View|Application
+    public function render()
     {
+        $projects = Project::with('languages', 'frameworks')
+            ->where('name', 'like', '%' . $this->searchProjects . '%')
+            ->paginate($this->perPage);
+
         return view('livewire.project.project-cards', [
-            'projects' => Project::where('name', 'like', '%' . $this->searchProjects . '%')->paginate($this->perPage)
+            'projects' => $projects,
         ]);
     }
 }

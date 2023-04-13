@@ -42,6 +42,19 @@
         </div>
     @endif
 
+    <div class="my-4 flex flex-wrap space-x-2 justify-center">
+        @foreach ($project->languages as $index => $language)
+            <x-badge color="blue">
+                {{ $language->name }}
+            </x-badge>
+        @endforeach
+        @foreach ($project->frameworks as $index => $framework)
+            <x-badge color="purple">
+                {{ $framework->name }}
+            </x-badge>
+        @endforeach
+    </div>
+
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center">
         <div class="mb-4 ml-8 mr-8 text-justify mt-8 break-words w-4/5">
             {!! html_entity_decode($project->description) !!}

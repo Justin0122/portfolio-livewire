@@ -54,6 +54,30 @@
                                 @endphp
                             </div>
                         </div>
+                        @foreach ($project->languages as $index => $language)
+                            @if($index < 2)
+                                <span
+                                    class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-pink-100 text-pink-800 cursor-default dark:bg-pink-800 dark:text-pink-100 mr-2 text-center justify-center rounded-md mb-2">
+                                    {{ $language->name }}
+                                </span>
+                            @endif
+                        @endforeach
+                        @foreach ($project->frameworks as $index => $framework)
+                            @if($index < 2)
+                                <span
+                                    class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 mr-2 text-center justify-center rounded-md mb-2">
+                                    {{ $framework->name }}
+                                </span>
+                            @endif
+                        @endforeach
+
+                        <!-- if the count is more than 2, show "and more" -->
+                        @if(count($project->languages) > 2 || count($project->frameworks) > 2)
+                            <x-badge color="red">
+                                and more...
+                            </x-badge>
+                        @endif
+
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-40">
         @foreach ($projects as $project)
             <div
-                class="item pr-4 pl-4 h-80 min-h-80 flex justify-between flex-col rounded-lg overflow-hidden">
+                class="item pr-4 pl-4 min-h-80 flex justify-between flex-col rounded-lg overflow-hidden">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg h-full">
                     <div class="px-4 py-5 sm:px-6">
                         @if ($project->created_at->diffInDays() <= 7)
@@ -71,6 +71,18 @@
                                     }
                                 @endphp
                             </div>
+                            @foreach ($project->languages as $language)
+                                <span
+                                    class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-pink-100 text-pink-800 cursor-default dark:bg-pink-800 dark:text-pink-100 mr-2 text-center justify-center rounded-md mb-2">
+                                    {{ $language->name }}
+                                </span>
+                            @endforeach
+                            @foreach ($project->frameworks as $framework)
+                                <span
+                                    class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 mr-2 text-center justify-center rounded-md mb-2">
+                                    {{ $framework->name }}
+                                </span>
+                            @endforeach
                         </div>
                     </div>
                 </div>

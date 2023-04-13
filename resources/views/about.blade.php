@@ -35,17 +35,17 @@
         <div class="flex flex-wrap p-2">
             @foreach ($skills as $skill)
                 <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold bg-purple-100 text-purple-800 cursor-default dark:bg-purple-800 dark:text-purple-100 mr-2 p-2 text-center justify-center rounded-md mb-2">
-            {{ $skill }}
-        </span>
+                    class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-purple-100 text-purple-800 cursor-default dark:bg-purple-800 dark:text-purple-100 mr-2 text-center justify-center rounded-md mb-2">
+                    {{ $skill }}
+                </span>
             @endforeach
         </div>
         <div class="flex flex-wrap p-2">
             @foreach ($personalSkills as $skill)
                 <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold bg-pink-100 text-pink-800 cursor-default dark:bg-pink-800 dark:text-pink-100 mr-2 p-2 text-center justify-center rounded-md mb-2">
-            {{ $skill }}
-        </span>
+                    class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-pink-100 text-pink-800 cursor-default dark:bg-pink-800 dark:text-pink-100 mr-2 text-center justify-center rounded-md mb-2">
+                    {{ $skill }}
+                </span>
             @endforeach
         </div>
     </div>

@@ -18,12 +18,17 @@ class ProjectsTable extends Component
 
     public $name;
 
-    public function render(): Factory|View|Application
+    public function render()
     {
+        $projects = Project::with('languages', 'frameworks')
+            ->where('name', 'like', '%' . $this->searchProjects . '%')
+            ->paginate(10, ['*'], 'page', $this->page);
+
         return view('livewire.project.projects-table', [
-            'projects' => Project::where('name', 'like', '%' . $this->searchProjects . '%')->paginate(10, ['*'], 'page', $this->page),
+            'projects' => $projects,
         ]);
     }
+
 
     public function createProject(): void
     {

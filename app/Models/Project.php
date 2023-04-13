@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Project extends Model
 {
@@ -41,5 +42,15 @@ class Project extends Model
             $files = [];
         }
         return $files;
+    }
+
+    public function languages(): BelongsToMany
+    {
+        return $this->belongsToMany(Language::class, 'project_tags');
+    }
+
+    public function frameworks(): BelongsToMany
+    {
+        return $this->belongsToMany(Framework::class, 'project_tags');
     }
 }

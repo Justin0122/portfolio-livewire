@@ -15,6 +15,8 @@
             <tr>
                 <th scope="col" class="p-4"></th>
                 <th scope="col" class="py-3 px-6">Title</th>
+                <th scope="col" class="py-3 px-6 hidden md:table-cell">Languages</th>
+                <th scope="col" class="py-3 px-6 hidden md:table-cell">Frameworks</th>
                 <th scope="col" class="py-3 px-6 hidden md:table-cell">Image</th>
                 <th scope="col" class="py-3 px-6 hidden md:table-cell">Active</th>
                 <th scope="col" class="py-3 px-6 hidden md:table-cell">Pinned</th>
@@ -39,6 +41,8 @@
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6"></td>
+                    <td class="py-4 px-6"></td>
+                    <td class="py-4 px-6"></td>
                     <td class="py-4 px-6 flex flex-row space-x-2 justify-center">
                         <x-secondary-button type="submit" class="w-1/4 flex justify-center items-center text-xl">
                             +
@@ -49,6 +53,8 @@
             @if ($projects->count() === 0)
                 <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                     <td class="py-4 px-6" colspan="7">No projects found.</td>
+                    <td class="py-4 px-6"></td>
+                    <td class="py-4 px-6"></td>
                     <td class="py-4 px-6"></td>
                 </tr>
             @endif
@@ -64,6 +70,22 @@
                     </td>
                     <td class="py-4 px-6 hover:cursor-pointer hover:text-blue-500 transition ease-in-out duration-300"
                         onclick="window.location.href='/projects/{{ $project->id }}/edit'">{{ $project->name }}</td>
+
+                    <td class="py-4 px-6 w-1/6 hidden md:table-cell">
+                        <div class="flex flex-wrap">
+                            @foreach ($project->languages as $language)
+                                <x-badge color="blue">{{ $language->name }}</x-badge>
+                            @endforeach
+                        </div>
+                    </td>
+                    <td class="py-4 px-6 w-1/6 hidden md:table-cell">
+                        <div class="flex flex-wrap">
+                            @foreach ($project->frameworks as $framework)
+                                <x-badge color="blue">{{ $framework->name }}</x-badge>
+                            @endforeach
+                        </div>
+                    </td>
+
                     <td class="py-4 px-6 w-1/6 hidden md:table-cell">
                         <div class="flex flex-wrap">
                             @php
