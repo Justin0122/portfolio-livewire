@@ -20,13 +20,16 @@ return new class extends Migration {
             'Laravel',
             'Vue.js',
             'React.js',
-            'Angular',
             'Bootstrap',
             'Tailwind',
             'jQuery',
             'Node.js',
             'Express.js',
             'Flask',
+            'Livewire',
+            'Inertia.js',
+            'Nuxt.js',
+            'Next.js',
         );
 
         foreach ($frameworks as $framework) {

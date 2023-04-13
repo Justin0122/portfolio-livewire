@@ -22,6 +22,7 @@
     },
     "frameworks": {
         "laravel": "10.3",
-        "tailwind": "3.1.0"
+        "tailwind": "3.1.0",
+        "livewire": "2.12.3"
     }
 }
