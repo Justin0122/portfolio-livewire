@@ -29,8 +29,19 @@ class ProjectCards extends Component
 
     public function render()
     {
-        $projects = Project::with('languages', 'frameworks')
-            ->where('name', 'like', '%' . $this->searchProjects . '%')
+        $query = Project::query();
+
+        if (!empty($this->searchProjects)) {
+            $query->where('name', 'like', '%' . $this->searchProjects . '%')
+                ->orWhereHas('languages', function ($q) {
+                    $q->where('name', 'like', '%' . $this->searchProjects . '%');
+                })
+                ->orWhereHas('frameworks', function ($q) {
+                    $q->where('name', 'like', '%' . $this->searchProjects . '%');
+                });
+        }
+
+        $projects = $query->with('languages', 'frameworks')
             ->paginate($this->perPage);
 
         return view('livewire.project.project-cards', [
