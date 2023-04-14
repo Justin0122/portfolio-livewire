@@ -76,7 +76,6 @@
                     },
                     900: {
                         items: 1,
-                        edgePadding: 200,
                     }
                 },
                 slideBy: 'page',
