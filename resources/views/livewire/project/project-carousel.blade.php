@@ -26,8 +26,12 @@
                             {{ $project->is_pinned ? '📌' : '' }}
                         </h3>
                         <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-400 truncate">
-                            Github: <a href="{{ $project->github_link }}"
-                                       class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">{{ $project->github_link }}</a>
+                            @if ($project->github_link)
+                                Github: <a href="{{ $project->github_link }}"
+                                           class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">{{ $project->github_link }}</a>
+                            @else
+                                Github: N/A
+                            @endif
                         </p>
                     </div>
 
@@ -63,7 +67,7 @@
                             @endif
                         @endforeach
                         @foreach ($project->frameworks as $index => $framework)
-                            @if($index < 2)
+                            @if($index < 1)
                                 <span
                                     class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-blue-100 text-blue-800 cursor-default dark:bg-blue-800 dark:text-blue-100 mr-2 text-center justify-center rounded-md mb-2">
                                     {{ $framework->name }}
@@ -71,8 +75,7 @@
                             @endif
                         @endforeach
 
-                        <!-- if the count is more than 2, show "and more" -->
-                        @if(count($project->languages) > 2 || count($project->frameworks) > 2)
+                        @if(count($project->languages) > 2 || count($project->frameworks) > 1)
                             <span
                                 class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-gray-100 text-gray-800 cursor-default dark:bg-gray-800 dark:text-gray-100 mr-2 text-center justify-center rounded-md mb-2">
                                 and more

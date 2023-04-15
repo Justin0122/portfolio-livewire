@@ -1,8 +1,8 @@
 <div>
     @if (!empty($images))
-        <div class="flex">
-            <div class="content-center flex items-center justify-center">
-                <div class="px-4 py-12 sm:px-6">
+        <div class="flex flex flex-col items-center justify-center">
+            <div class="content-center flex items-center justify-center" style="max-width: 99%">
+                <div class="px-4 py-12 sm:px-6" style="max-width: 99%">
                     @php
                         $count = 1;
                     @endphp
@@ -58,7 +58,8 @@
     </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center">
-        <div class="text-justify mt-8 w-4/5 text-gray-700 dark:text-gray-300 sm:ml-8 sm:mr-8 lg:mb-4 lg:mt-8 lg:text-center lg:break-normal lg:w-auto">
+        <div
+            class="text-justify mt-8 w-4/5 text-gray-700 dark:text-gray-300 sm:ml-8 sm:mr-8 lg:mb-4 lg:mt-8 lg:break-normal lg:w-auto">
             {!! html_entity_decode($project->description) !!}
         </div>
 

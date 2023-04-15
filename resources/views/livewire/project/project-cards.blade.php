@@ -17,7 +17,7 @@
             </div>
         @endif
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-40">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-40">
         @foreach ($projects as $project)
             <div
                 class="item pr-4 pl-4 min-h-80 flex justify-between flex-col rounded-lg overflow-hidden">
