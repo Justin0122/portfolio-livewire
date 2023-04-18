@@ -5,7 +5,7 @@
         </x-header>
     </x-slot>
 
-    <div class="p-2 sm:px-6 sm:py-8 lg:px-96">
+    <div class="p-2 sm:px-6 sm:py-8">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             @auth
                 <livewire:project.projects-table/>

@@ -23,7 +23,7 @@ class ProjectCards extends Component
 
     public function loadMore(): void
     {
-        $this->perPage += 6;
+        $this->perPage += 8;
     }
 
 

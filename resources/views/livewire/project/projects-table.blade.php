@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('message'))
+        <div class="bg-green-200 text-green-700 p-4 mb-4 rounded">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="px-4 py-3 bg-white dark:bg-gray-800 dark:text-gray-300">
             {{ $projects->links() }}

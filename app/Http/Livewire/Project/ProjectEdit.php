@@ -92,14 +92,13 @@ class ProjectEdit extends Component
                 Storage::move($file, 'public/' . $project->id . '/' . $newName);
             }
         }
-        $this->emit('projectUpdated', true);
 
         $this->photos = [];
 
         $project->update($data);
         $this->project = $project;
         $this->images = $project->getFiles($project);
-
+        session()->flash('message', 'Project ' . $project->name . ' updated successfully');
         $this->render();
     }
 
