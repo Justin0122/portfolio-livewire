@@ -51,14 +51,15 @@ class ProjectsTable extends Component
         ];
 
         Project::create($data);
-        session()->flash('message', 'project created successfully.');
+        session()->flash('message', 'Project ' . $this->name . ' created successfully.');
     }
 
     public function deleteProject($id): void
     {
         $project = Project::find($id);
         $project->delete();
-        session()->flash('message', 'project deleted successfully.');
+        session()->flash('message', 'Project ' . $project->name . ' deleted successfully.');
+
     }
 
     public function togglePinned($id): void
@@ -69,7 +70,7 @@ class ProjectsTable extends Component
             $project->is_active = true;
         }
         $project->save(['is_pinned', 'is_active']);
-        session()->flash('message', 'project updated successfully.');
+        session()->flash('message', 'Project ' . $project->name . ' pinned successfully.');
     }
 
 
@@ -81,6 +82,6 @@ class ProjectsTable extends Component
             $project->is_pinned = false;
         }
         $project->save(['is_pinned', 'is_active']);
-        session()->flash('message', 'project updated successfully.');
+        session()->flash('message', 'Project ' . $project->name . ' activated successfully.');
     }
 }

@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('message'))
+        <div class="bg-green-200 text-green-700 p-4 mb-4 rounded">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="p-2 w-auto sm:py-8">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400 hidden sm:table">
@@ -44,16 +49,6 @@
                         </td>
                         <td class="py-4 px-6 text-center">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-                            @if (session('status') === 'project-updated')
-                                <p
-                                    x-data="{ show: true }"
-                                    x-show="show"
-                                    x-transition
-                                    x-init="setTimeout(() => show = false, 2000)"
-                                    class="text-sm text-gray-600 dark:text-gray-400"
-                                >{{ __('Saved.') }}</p>
-                            @endif
                         </td>
                     </tr>
                 </form>
@@ -81,16 +76,6 @@
                     <div class="save-button mt-4 mb-4">
                         <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 sm:px-6">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-                            @if (session('projectUpdated') === 'project-updated')
-                                <p
-                                    x-data="{ show: true }"
-                                    x-show="show"
-                                    x-transition
-                                    x-init="setTimeout(() => show = false, 2000)"
-                                    class="text-sm text-gray-600 dark:text-gray-400"
-                                >{{ __('Saved.') }}</p>
-                            @endif
                         </div>
                     </div>
                     <div class="checkboxes columns-2 mt-4">
