@@ -99,7 +99,7 @@ class ProjectEdit extends Component
         $project->update($data);
         $this->project = $project;
         $this->images = $project->getFiles($project);
-
+        session()->flash('status', 'project ' . $this->name . ' updated');
         $this->render();
     }
 
