@@ -7,10 +7,10 @@ use App\Models\Language;
 use App\Models\Project;
 use Exception;
 use Github\Client;
-use Github\HttpClient\Builder;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Helpers\ImageHelper;
 
 class ProjectEdit extends Component
 {
@@ -30,7 +30,7 @@ class ProjectEdit extends Component
         $this->description = $project->description;
         $this->github_link = $project->github_link;
         $this->project = $project;
-        $this->images = $project->getFiles($project);
+        $this->images = ImageHelper::getImages($project->id, 'projects');
         $this->active = $project->is_active;
         $this->pinned = $project->is_pinned;
     }
@@ -46,8 +46,6 @@ class ProjectEdit extends Component
 
     public function edit($id)
     {
-        session()->flash('status', 'project-updated');
-
         $this->validate([
             'name' => 'required',
             'description' => 'required',
@@ -61,8 +59,6 @@ class ProjectEdit extends Component
         }
 
         $project = Project::find($id);
-        $projectName = strtolower(str_replace(' ', '-', $this->name));
-        $imageCount = count($project->getFiles($project));
         $data = [
             'name' => $this->name,
             'description' => $this->description,
@@ -72,32 +68,19 @@ class ProjectEdit extends Component
             'is_pinned' => $this->pinned,
         ];
 
-        //if the github link is not empty, update the project with the github api
         if ($this->github_link) {
             $this->updateWithGithubApi($this->github_link);
         }
 
         if ($this->photos) {
-            foreach ($this->photos as $photo) {
-                $imageCount++;
-                $photoName = $projectName . $imageCount . '.' . $photo->getClientOriginalExtension();
-                $photo->storeAs('public/' . $project->id, $photoName);
-            }
-        } else {
-            $files = Storage::files('public/' . $project->id);
-            foreach ($files as $file) {
-                $oldName = basename($file);
-                $pattern = '/^' . preg_quote($project->name) . '/i';
-                $newName = preg_replace($pattern, $projectName, $oldName, 1);
-                Storage::move($file, 'public/' . $project->id . '/' . $newName);
-            }
+            ImageHelper::addImages($this->photos, $project->id, 'projects');
         }
 
         $this->photos = [];
 
         $project->update($data);
         $this->project = $project;
-        $this->images = $project->getFiles($project);
+        $this->images = ImageHelper::getImages($project->id, 'projects');
         session()->flash('message', 'Project ' . $project->name . ' updated successfully');
         $this->render();
     }
@@ -175,11 +158,7 @@ class ProjectEdit extends Component
 
     public function removePhoto($id, $photo)
     {
-        $path = storage_path('app/public/' . $id . '/' . $photo);
-        if (file_exists($path)) {
-            unlink($path);
-        }
-        $this->images = $this->project->getFiles($this->project);
-        $this->render();
+        ImageHelper::removeImage($photo);
+        $this->images = ImageHelper::getImages($id, 'projects');
     }
 }

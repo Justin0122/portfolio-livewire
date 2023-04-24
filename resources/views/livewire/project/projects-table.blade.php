@@ -99,14 +99,9 @@
 
                     <td class="py-4 px-6 w-1/6 hidden md:table-cell">
                         <div class="flex flex-wrap">
-                            @php
-                                $imgPath = 'storage/' . $project->id . '/';
-                                $images = glob($imgPath . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-                                if (count($images) > 0) {
-                                    $imageUrl = asset($images[0]);
-                                    echo '<img src="' . $imageUrl . '" alt="Image" class="w-50 h-20 object-cover rounded-lg mr-4 mb-4 hover:opacity-90 transition ease-in-out duration-150 hover:scale-110 transform hover:shadow-lg" />';
-                                }
-                            @endphp
+                            <img src="{{ $project->images[0] }}"
+                                 alt="Image"
+                                 class="w-50 h-20 object-cover rounded-lg mr-4 mb-4 hover:opacity-90 transition ease-in-out duration-150 hover:scale-110 transform hover:shadow-lg"/>
 
                         </div>
                     </td>

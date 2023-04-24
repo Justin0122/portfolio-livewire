@@ -53,23 +53,14 @@
                          onclick="window.location.href = '/project/{{ $project->id }}'">
                         <div class="content-center">
                             <div class="flex items-center justify-center h-40 pb-4">
-                                @php
-                                    if (file_exists('storage/' . $project->id)) {
-                                @endphp
-                                <img
-                                    src="/storage/{{ $project->id }}/{{ strtolower($project->name) }}1.png"
-                                    class="w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
-                                @php
-                                    } else {
-                                @endphp
-                                <div class="w-80 h-40 flex items-center justify-center">
+
+                                @if (!empty($project->images))
                                     <img
-                                        src="/storage/default.png"
-                                        class="w-20 h-20 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
-                                </div>
-                                @php
-                                    }
-                                @endphp
+                                        src="{{ $project->images[0] }}"
+                                        class="w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
+                                @else
+                                    <div class="w-80 h-40 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+                                @endif
                             </div>
                             @foreach ($project->languages as $language)
                                 <span

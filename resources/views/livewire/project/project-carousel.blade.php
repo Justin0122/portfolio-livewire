@@ -40,11 +40,12 @@
                         <div class="content-center">
                             <div class="flex items-center justify-center h-40 pb-4">
                                 @php
-                                    if (file_exists('storage/' . $project->id)) {
+                                    if ($project->images){
                                 @endphp
                                 <img
-                                    src="/storage/{{ $project->id }}/{{ strtolower($project->name) }}1.png"
-                                    class="w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
+                                    src="{{ $project->images[0] }}"
+                                    class=" w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300
+                                    ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
                                 @php
                                     } else {
                                 @endphp

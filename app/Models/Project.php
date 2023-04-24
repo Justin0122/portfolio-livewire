@@ -33,19 +33,6 @@ class Project extends Model
         return $this->all();
     }
 
-    public function getFiles(Project $project): bool|array
-    {
-        if (Storage::exists('public/' . $project->id)) {
-            $files = Storage::files('public/' . $project->id);
-            $files = array_map(function ($file) {
-                return basename($file);
-            }, $files);
-        } else {
-            $files = [];
-        }
-        return $files;
-    }
-
     public function languages(): BelongsToMany
     {
         return $this->belongsToMany(Language::class, 'project_tags');
