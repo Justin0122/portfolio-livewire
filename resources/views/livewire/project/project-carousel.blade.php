@@ -40,11 +40,12 @@
                         <div class="content-center">
                             <div class="flex items-center justify-center h-40 pb-4">
                                 @php
-                                    if (file_exists('storage/' . $project->id)) {
+                                    if ($project->images){
                                 @endphp
                                 <img
-                                    src="/storage/{{ $project->id }}/{{ strtolower($project->name) }}1.png"
-                                    class="w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
+                                    src="{{ $project->images[0] }}"
+                                    class=" w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300
+                                    ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
                                 @php
                                     } else {
                                 @endphp
@@ -77,7 +78,8 @@
 
                         @if(count($project->languages) > 2 || count($project->frameworks) > 1)
                             <span
-                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-gray-100 text-gray-800 cursor-default dark:bg-gray-800 dark:text-gray-100 mr-2 text-center justify-center rounded-md mb-2">
+                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100 mr-2 text-center justify-center rounded-md mb-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 ease-in-out"
+                                onclick="window.location.href = '/project/{{ $project->id }}'">
                                 and more
                             </span>
                         @endif

@@ -3,11 +3,9 @@
 namespace App\Http\Livewire\Project;
 
 use App\Models\Project;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Helpers\ImageHelper;
 
 class ProjectsTable extends Component
 {
@@ -31,6 +29,10 @@ class ProjectsTable extends Component
                     });
             })
             ->paginate(10, ['*'], 'page', $this->page);
+
+        $projects->map(function ($project) {
+            $project->images = ImageHelper::getImages($project->id, 'projects');
+        });
 
         return view('livewire.project.projects-table', [
             'projects' => $projects,
@@ -57,6 +59,8 @@ class ProjectsTable extends Component
     public function deleteProject($id): void
     {
         $project = Project::find($id);
+        //use ImageHelper to delete images
+        Imagehelper::removeImages($project->id, 'projects');
         $project->delete();
         session()->flash('message', 'Project ' . $project->name . ' deleted successfully.');
 

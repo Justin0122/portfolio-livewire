@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Helpers\ImageHelper;
 
 class ProjectsController extends Controller
 {
@@ -15,7 +16,7 @@ class ProjectsController extends Controller
 
     public function edit(Project $project)
     {
-        $files = $project->getFiles($project);
+        $files = ImageHelper::getImages($project->id, 'projects');
 
         return view('projects.project.edit', [
             'project' => $project,
@@ -25,7 +26,7 @@ class ProjectsController extends Controller
 
     public function show(Project $project)
     {
-        $files = $project->getFiles($project);
+        $files = ImageHelper::getImages($project->id, 'projects');
 
         return view('projects.project.show', [
             'project' => $project,

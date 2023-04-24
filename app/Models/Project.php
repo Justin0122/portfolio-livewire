@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
@@ -30,18 +31,6 @@ class Project extends Model
     public function getProjects(): Collection
     {
         return $this->all();
-    }
-
-    public function getFiles(Project $project): bool|array
-    {
-        if (file_exists(storage_path('app/public/' . $project->id))) {
-            $files = scandir(storage_path('app/public/' . $project->id));
-            $files = array_diff($files, array('.', '..'));
-            $files = array_values($files);
-        } else {
-            $files = [];
-        }
-        return $files;
     }
 
     public function languages(): BelongsToMany

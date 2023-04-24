@@ -4,12 +4,7 @@ namespace App\Http\Livewire\Project;
 
 use Livewire\Component;
 use App\Models\Project;
-use App\Models\Framework;
-use App\Models\Language;
-use App\Models\ProjectTags;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
+use App\Helpers\ImageHelper;
 
 class ProjectCards extends Component
 {
@@ -44,8 +39,13 @@ class ProjectCards extends Component
         $projects = $query->with('languages', 'frameworks')
             ->paginate($this->perPage);
 
+        $projects->map(function ($project) {
+            $project->images = ImageHelper::getImages($project->id, 'projects');
+        });
+
         return view('livewire.project.project-cards', [
             'projects' => $projects,
         ]);
     }
+
 }
