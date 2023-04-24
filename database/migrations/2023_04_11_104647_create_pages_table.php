@@ -47,12 +47,6 @@ return new class extends Migration {
                 'title' => 'projects',
             )
         );
-        DB::table('pages')->insert(
-            array(
-                'title' => 'snippets',
-                'visibility' => '2',
-            )
-        );
     }
 
     /**

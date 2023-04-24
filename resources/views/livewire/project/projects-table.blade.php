@@ -99,10 +99,11 @@
 
                     <td class="py-4 px-6 w-1/6 hidden md:table-cell">
                         <div class="flex flex-wrap">
-                            <img src="{{ $project->images[0] }}"
-                                 alt="Image"
-                                 class="w-50 h-20 object-cover rounded-lg mr-4 mb-4 hover:opacity-90 transition ease-in-out duration-150 hover:scale-110 transform hover:shadow-lg"/>
-
+                            @if (!empty($project->images))
+                                <img src="{{ $project->images[0] }}"
+                                     alt="Image"
+                                     class="w-50 h-20 object-cover rounded-lg mr-4 mb-4 hover:opacity-90 transition ease-in-out duration-150 hover:scale-110 transform hover:shadow-lg"/>
+                            @endif
                         </div>
                     </td>
                     <td class="py-4 px-6 hidden md:table-cell" id="is_active">
