@@ -81,7 +81,6 @@ class ProjectEdit extends Component
         $project->update($data);
         $this->project = $project;
         $this->images = ImageHelper::getImages($project->id, 'projects');
-        session()->flash('message', 'Project ' . $project->name . ' updated successfully');
         $this->emit('projectUpdated');
         $this->render();
     }

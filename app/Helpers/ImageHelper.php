@@ -10,29 +10,36 @@ class ImageHelper extends Model
     {
         $images = [];
         $path = public_path('/storage/' . $type . '/' . $id);
-        $files = scandir($path);
-        foreach ($files as $file) {
-            if ($file != '.' && $file != '..') {
-                $images[] = $file;
+        try {
+            $files = scandir($path);
+            foreach ($files as $file) {
+                if ($file != '.' && $file != '..') {
+                    $images[] = $file;
+                }
             }
+            $path = "storage/" . $type . "/" . $id . "/";
+            return array_map(function ($image) use ($path) {
+                return $path . $image;
+            }, $images);
+        } catch (\Exception $e) {
+            return [];
         }
-        $path = "storage/" . $type . "/" . $id . "/";
-        return array_map(function ($image) use ($path) {
-            return $path . $image;
-        }, $images);
     }
 
     public static function removeImages($id, $type): void
     {
-        //delete the entire folder
-        $path = public_path('/storage/' . $type . '/' . $id);
-        $files = scandir($path);
-        foreach ($files as $file) {
-            if ($file != '.' && $file != '..') {
-                unlink($path . '/' . $file);
+        try {
+            $path = public_path('/storage/' . $type . '/' . $id);
+            $files = scandir($path);
+            foreach ($files as $file) {
+                if ($file != '.' && $file != '..') {
+                    unlink($path . '/' . $file);
+                }
             }
+            rmdir($path);
+        } catch (\Exception $e) {
+            return;
         }
-        rmdir($path);
     }
 
     public static function removeImage($image): void

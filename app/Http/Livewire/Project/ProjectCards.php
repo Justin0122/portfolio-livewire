@@ -33,11 +33,14 @@ class ProjectCards extends Component
                 })
                 ->orWhereHas('frameworks', function ($q) {
                     $q->where('name', 'like', '%' . $this->searchProjects . '%');
-                });
+                })
+                ->where('is_active', true);
+
         }
 
         $projects = $query->with('languages', 'frameworks')
-            ->paginate($this->perPage);
+            ->paginate($this->perPage)
+            ->where('is_active', true);
 
         $projects->map(function ($project) {
             $project->images = ImageHelper::getImages($project->id, 'projects');
