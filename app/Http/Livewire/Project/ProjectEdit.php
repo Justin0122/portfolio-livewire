@@ -81,6 +81,7 @@ class ProjectEdit extends Component
         $project->update($data);
         $this->project = $project;
         $this->images = ImageHelper::getImages($project->id, 'projects');
+        $this->emit('projectUpdated');
         $this->render();
     }
 
