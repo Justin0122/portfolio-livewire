@@ -54,9 +54,9 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/snippets', function () {
-    return view('snippets.snippets');
-})->name('snippets');
+Route::get('/spotify', function () {
+    return view('spotify');
+})->name('spotify');
 
 
 require __DIR__ . '/auth.php';
