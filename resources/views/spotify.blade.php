@@ -3,6 +3,10 @@
 use SpotifyWebAPI\Session;
 use SpotifyWebAPI\SpotifyWebAPI;
 
+if (!isset($_GET['code'])) {
+    header('Location: /');
+    die();
+}
 $session = new Session(
     $_ENV['SPOTIFY_CLIENT_ID'],
     $_ENV['SPOTIFY_CLIENT_SECRET'],
