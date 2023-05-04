@@ -16,10 +16,18 @@ $session = new Session(
 
 $session->requestAccessToken($_GET['code']);
 $accessToken = $session->getAccessToken();
+$refreshToken = $session->getRefreshToken();
 
 $api = new SpotifyWebAPI();
 $api->setAccessToken($accessToken);
 
 $user = $api->me();
 
-echo "<script>window.close();</script>";
+echo "<pre>";
+print_r($user);
+echo "</pre>";
+
+echo "accesstoken: ";
+echo $accessToken;
+echo "refreshtoken: ";
+echo $refreshToken;
