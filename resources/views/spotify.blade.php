@@ -13,6 +13,8 @@ $session = new Session(
     $_ENV['SPOTIFY_REDIRECT_URI']
 );
 
+$discord_userID = $_GET['state'];
+
 $session->requestAccessToken($_GET['code']);
 $accessToken = $session->getAccessToken();
 $refreshToken = $session->getRefreshToken();
@@ -23,8 +25,8 @@ $tokens = [
     'refresh_token' => $refreshToken,
 ];
 
-// Encode the tokens as JSON
-$jsonTokens = json_encode($tokens);
+// Encode the tokens as JSON and put the userID as key
+$jsonTokens = json_encode([$discord_userID => $tokens]);
 
 // Send the JSON tokens in the payload of the Discord webhook
 //get webhook url from .env
