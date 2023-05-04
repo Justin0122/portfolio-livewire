@@ -13,21 +13,41 @@ $session = new Session(
     $_ENV['SPOTIFY_REDIRECT_URI']
 );
 
-
 $session->requestAccessToken($_GET['code']);
 $accessToken = $session->getAccessToken();
 $refreshToken = $session->getRefreshToken();
 
-$api = new SpotifyWebAPI();
-$api->setAccessToken($accessToken);
+// Create an array with the tokens
+$tokens = [
+    'access_token' => $accessToken,
+    'refresh_token' => $refreshToken,
+];
 
-$user = $api->me();
+// Encode the tokens as JSON
+$jsonTokens = json_encode($tokens);
 
-echo "<pre>";
-print_r($user);
-echo "</pre>";
+// Send the JSON tokens in the payload of the Discord webhook
+//get webhook url from .env
+$webhookUrl = $_ENV['DISCORD_WEBHOOK_URL'];
 
-echo "accesstoken: ";
-echo $accessToken;
-echo "refreshtoken: ";
-echo $refreshToken;
+$data = [
+    'content' => $jsonTokens,
+];
+$options = [
+    'http' => [
+        'header'  => 'Content-type: application/json',
+        'method'  => 'POST',
+        'content' => json_encode($data),
+    ],
+];
+$context  = stream_context_create($options);
+$result = file_get_contents($webhookUrl, false, $context);
+
+// Check if the message was successfully sent
+if ($result === false) {
+    echo 'Failed to send message to Discord webhook.';
+} else {
+    echo 'Access and refresh tokens sent to Discord webhook.';
+}
+
+
