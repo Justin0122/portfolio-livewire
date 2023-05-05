@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('discords', function (Blueprint $table) {
-            $table->id();
+            $table->string('discord_id');
+            $table->primary('discord_id');
+            $table->longText('spotify_access_token');
+            $table->longText('spotify_refresh_token');
             $table->timestamps();
         });
     }
