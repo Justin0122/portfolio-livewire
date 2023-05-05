@@ -25,11 +25,8 @@ $tokens = [
     'refresh_token' => $refreshToken,
 ];
 
-// Encode the tokens as JSON and put the userID as key
 $jsonTokens = json_encode([$discord_userID => $tokens]);
 
-// Send the JSON tokens in the payload of the Discord webhook
-//get webhook url from .env
 $webhookUrl = $_ENV['DISCORD_WEBHOOK_URL'];
 
 $data = [
@@ -43,6 +40,7 @@ $options = [
     ],
 ];
 $context  = stream_context_create($options);
+
 $result = file_get_contents($webhookUrl, false, $context);
 
 // Check if the message was successfully sent
