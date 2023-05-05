@@ -2,12 +2,12 @@
 
 namespace App\Restify;
 
-use App\Models\Dream;
+use App\Models\Discord;
 use Binaryk\LaravelRestify\Http\Requests\RestifyRequest;
 
-class DreamRepository extends Repository
+class DiscordRepository extends Repository
 {
-    public static string $model = Dream::class;
+    public static string $model = Discord::class;
 
     public function fields(RestifyRequest $request): array
     {

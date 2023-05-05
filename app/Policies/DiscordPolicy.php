@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Dream;
+use App\Models\Discord;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class DreamPolicy
+class DiscordPolicy
 {
     use HandlesAuthorization;
 
@@ -15,7 +15,7 @@ class DreamPolicy
         return true;
     }
 
-    public function show(User $user = null, Dream $model): bool
+    public function show(User $user = null, Discord $model): bool
     {
         return true;
     }
@@ -30,22 +30,22 @@ class DreamPolicy
         return false;
     }
 
-    public function update(User $user, Dream $model): bool
+    public function update(User $user, Discord $model): bool
     {
         return false;
     }
 
-    public function updateBulk(User $user, Dream $model): bool
+    public function updateBulk(User $user, Discord $model): bool
     {
         return false;
     }
 
-    public function deleteBulk(User $user, Dream $model): bool
+    public function deleteBulk(User $user, Discord $model): bool
     {
         return false;
     }
 
-    public function delete(User $user, Dream $model): bool
+    public function delete(User $user, Discord $model): bool
     {
         return false;
     }
