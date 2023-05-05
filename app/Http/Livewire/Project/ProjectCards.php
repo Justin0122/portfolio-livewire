@@ -29,7 +29,7 @@ class ProjectCards extends Component
 
     public function render()
     {
-        $query = Project::query();
+        $query = Project::query()->Where('is_active', true);
 
         if (!empty($this->searchProjects)) {
             $query->where('name', 'like', '%' . $this->searchProjects . '%')
@@ -38,7 +38,7 @@ class ProjectCards extends Component
                 })
                 ->orWhereHas('frameworks', function ($q) {
                     $q->where('name', 'like', '%' . $this->searchProjects . '%');
-                });
+                })->Where('is_active', true);
         }
 
         $projects = $query->with('languages', 'frameworks')

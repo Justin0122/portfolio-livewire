@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\SpotifyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,9 +56,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
-Route::get('/spotify', function () {
-    return view('spotify');
-})->name('spotify');
+Route::get('/spotify', [SpotifyController::class, 'index'])->name('spotify');
 
 
 require __DIR__ . '/auth.php';
