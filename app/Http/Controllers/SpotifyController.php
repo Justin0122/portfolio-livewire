@@ -20,10 +20,16 @@ class SpotifyController
 
         $discord_userID = $_GET['state'];
 
-        $session->requestAccessToken($_GET['code']);
+        try {
+            $session->requestAccessToken($_GET['code']);
+        } catch (\SpotifyWebAPI\SpotifyWebAPIException $e) {
+            if ($e->getMessage() == 'Invalid refresh token') {
+                $session->refreshAccessToken($_GET['code']);
+            }
+        }
+
         $accessToken = $session->getAccessToken();
         $refreshToken = $session->getRefreshToken();
-
 
         $discord = \App\Models\Discord::where('discord_id', $discord_userID)->first();
 
@@ -39,6 +45,9 @@ class SpotifyController
         $discord->spotify_access_token = $accessToken;
         $discord->spotify_refresh_token = $refreshToken;
         $discord->save();
+
+        //go to the view
+        return view('spotify');
 
     }
 
