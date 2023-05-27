@@ -1,5 +1,5 @@
-<div class="py-12 text-gray-900 dark:text-gray-100">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<div class="py-6 text-gray-900 dark:text-gray-100">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mr-4 ml-4">
         <div class="badge-slider">
             @foreach ($projects as $project)
                 <span
@@ -20,8 +20,8 @@
             @endforeach
         </div>
 
-        @if (count($projects) > 12)
-            <div class="tns-controls flex justify-center items-center mt-4 space-x-2"
+        @if (count($projects) > 3)
+            <div class="tns-controls2 flex justify-center items-center mt-4 space-x-2"
                  aria-label="Carousel Navigation">
                 <button
                     class="tns-controls__item tns-controls__item--prev w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -37,7 +37,8 @@
     <script>
         var slider = tns({
             container: '.badge-slider',
-            items: 12,
+            items: 3,
+            edgePadding: 5,
             responsive: {
                 640: {
                     edgePadding: 20,
@@ -58,11 +59,11 @@
             touch: true,
             arrowKeys: false,
             speed: 200,
-            nav: false,
+            nav: true,
             autoplayButtonOutput: false,
             mouseDrag: true,
             loop: false,
-            controlsContainer: ".tns-controls",
+            controlsContainer: ".tns-controls2",
         });
     </script>
     <div class="flex justify-center mt-4">

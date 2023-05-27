@@ -87,7 +87,7 @@
             </div>
         @endforeach
     </div>
-    @if (count($projects) > 3)
+    @if (count($projects) > 2)
         <div class="tns-controls flex justify-center items-center mt-4 space-x-2"
              aria-label="Carousel Navigation">
             <button
