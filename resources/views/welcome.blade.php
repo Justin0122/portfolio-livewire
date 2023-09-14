@@ -43,7 +43,7 @@
 
         <p class="text-gray-600 dark:text-gray-400 mt-8 w-3/4 text-xl">
             This is my website where I will be posting my projects. I am a student at Rijn IJssel College and I am
-            currently studying for my MBO Software Developer diploma. I am currently in my 2nd year and I am looking
+            currently studying for my MBO Software Developer diploma. I am currently in my 3rd year and I am looking
             forward to the future.
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">

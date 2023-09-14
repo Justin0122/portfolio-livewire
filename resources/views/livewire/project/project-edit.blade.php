@@ -151,7 +151,7 @@
                     <div class="flex">
                         @foreach ($images as $file)
                             <div class="w-32 h-32 mr-4 mb-4">
-                                <img src="/storage/{{ $project->id }}/{{ $file }}" class="w-40 h-20 object-cover"
+                                <img src="/{{ $project->id }}/{{ $file }}" class="w-40 h-20 object-cover"
                                      alt="">
                                 {{ $file }} <br> [Saved]
                                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded"

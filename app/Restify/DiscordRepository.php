@@ -11,8 +11,18 @@ class DiscordRepository extends Repository
 
     public function fields(RestifyRequest $request): array
     {
+
         //if the argument with the secure token is not the same as the one in the .env file, return an empty array
         if($request->get('secure_token') != $_ENV['SECURE_TOKEN']){
+            return [];
+        }
+
+	        if($request->get('logout') != null){
+            $discord = Discord::where('discord_id', $request->get('discord_id'))->first();
+
+            if($discord != null){
+                $discord->delete();
+            }
             return [];
         }
 

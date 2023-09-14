@@ -33,6 +33,19 @@ class ProjectsController extends Controller
         ]);
     }
 
+    public function api()
+    {
+        //if secure_token is not the same as the one in the .env file, return an empty array
+        if(request()->get('secure_token') != $_ENV['SECURE_TOKEN']){
+            return [];
+        }
+        $amount = request()->get('amount') ?? 10;
+        $offset = request()->get('offset') ?? 0;
+        $projectModel = new Project();
+        $projects = $projectModel->getProjects($amount, $offset);
+        return $projects;
+    }
+
 }
 
 

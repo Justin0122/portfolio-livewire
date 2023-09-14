@@ -58,5 +58,4 @@ Route::get('/contact', function () {
 
 Route::get('/spotify', [SpotifyController::class, 'index'])->name('spotify');
 
-
 require __DIR__ . '/auth.php';

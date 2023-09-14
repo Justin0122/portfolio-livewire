@@ -40,17 +40,17 @@
                         <div class="content-center">
                             <div class="flex items-center justify-center h-40 pb-4">
                                 @php
-                                    if (file_exists('storage/' . $project->id)) {
+                                    if (file_exists($project->id)) {
                                 @endphp
                                 <img
-                                    src="/storage/{{ $project->id }}/{{ strtolower($project->name) }}1.png"
+                                    src="{{ $project->id }}/{{ strtolower($project->name) }}1.png"
                                     class="w-80 h-40 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
                                 @php
                                     } else {
                                 @endphp
                                 <div class="w-80 h-40 flex items-center justify-center">
                                     <img
-                                        src="/storage/default.png"
+                                        src="default.png"
                                         class="w-20 h-20 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
                                 </div>
                                 @php

@@ -27,9 +27,9 @@ class Project extends Model
         $project->save();
     }
 
-    public function getProjects(): Collection
+    public function getProjects($amount = 10, $offset = 0): Collection
     {
-        return $this->all();
+        return Project::where('is_active', 1)->orderBy('is_pinned', 'desc')->orderBy('created_at', 'desc')->skip($offset)->take($amount)->get();
     }
 
     public function getFiles(Project $project): bool|array
