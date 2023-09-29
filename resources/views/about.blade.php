@@ -18,7 +18,7 @@
             always
             open to learning new languages and frameworks. I am currently studying at RijnIJssel in Arnhem, the
             Netherlands,
-            where I am studying for an MBO 4 diploma in Software Development.
+            where I am studying for an MBO 4 (VET) diploma in Software Development.
         </h3>
     </div>
     <livewire:about-carousel/>
@@ -57,25 +57,25 @@
         <ul class="list-disc list-inside">
             <li>Vehicle engineering
                 <span
-                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">Kader</span>
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">Kader (SVS)</span>
                 <span
                     class="px-2 inline-flex text-sm leading-5 font-semibold bg-green-400 text-white cursor-default dark:bg-green-300 dark:text-green-900 text-center justify-center rounded-md">Graduated</span>
             </li>
             <li>Mechatronics
                 <span
-                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 3</span>
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 3 (VET)</span>
                 <span
                     class="px-2 inline-flex text-sm leading-5 font-semibold bg-green-400 text-white cursor-default dark:bg-green-300 dark:text-green-900 text-center justify-center rounded-md">Studied for 2 years</span>
             </li>
             <li>IT Systems and Devices All-Around Worker
                 <span
-                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 3</span>
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 3 (VET)</span>
                 <span
                     class="px-2 inline-flex text-sm leading-5 font-semibold bg-green-400 text-white cursor-default dark:bg-green-300 dark:text-green-900 text-center justify-center rounded-md">Graduated</span>
             </li>
             <li>Software development
                 <span
-                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 4</span>
+                    class="px-2 inline-flex text-sm leading-5 font-semibold bg-blue-400 text-white cursor-default dark:bg-blue-300 dark:text-blue-900 text-center justify-center rounded-md">MBO 4 (VET)</span>
                 <span
                     class="px-2 inline-flex text-sm leading-5 font-semibold bg-yellow-400 text-white cursor-default dark:bg-yellow-300 dark:text-yellow-900 text-center justify-center rounded-md">Still Studying</span>
             </li>
