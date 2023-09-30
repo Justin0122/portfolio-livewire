@@ -50,7 +50,7 @@
                                 @endphp
                                 <div class="w-80 h-40 flex items-center justify-center">
                                     <img
-                                        src="default.png"
+                                        src="storage/default.png"
                                         class="w-20 h-20 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-lg">
                                 </div>
                                 @php
