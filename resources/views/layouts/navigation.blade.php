@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('welcome') }}" class="text-gray-500 dark:text-gray-400">
+                    <a wire:navigate href="{{ route('welcome') }}" class="text-gray-500 dark:text-gray-400">
                         Welcome
                     </a>
                 </div>

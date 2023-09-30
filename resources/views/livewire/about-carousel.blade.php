@@ -6,7 +6,7 @@
                 <div class="overflow-hidden sm:rounded-lg h-full">
                     <div class="content-center">
                         <div class="flex items-center justify-center">
-                            <img src="about/{{ $image }}"
+                            <img src="storage/about/{{ $image }}"
                                  class="w-auto h-72 object-cover scale-100 hover:scale-105 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md rounded-lg mt-4 mb-4">
                         </div>
                     </div>

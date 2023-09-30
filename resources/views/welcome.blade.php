@@ -18,10 +18,10 @@
     @if (Route::has('login'))
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
             @auth
-                <a href="{{ url('/dashboard') }}"
+                <a wire:navigate href="{{ url('/dashboard') }}"
                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
             @else
-                <a href="{{ route('login') }}"
+                <a wire:navigate href="{{ route('login') }}"
                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
                     in</a>
             @endauth
@@ -48,10 +48,11 @@
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
             <div class="text-center text-gray-600 dark:text-gray-400 font-bold sm:mt-0 lg:mt-32">
-                <h3 class="text-2xl text-gray-800 dark:text-gray-200 font-extrabold"
-                    onclick="window.location.href = '/home'">
-                    <x-primary-button>View more</x-primary-button>
-                </h3>
+                <h3 class="text-2xl text-gray-800 dark:text-gray-200 font-extrabold">
+                <a wire:navigate.hover href="/home"
+			<x-primary-button>View more</x-primary-button>
+                </a>
+		</h3>
             </div>
             <div class="h-48 w-48 hidden sm:block">
                 <x-application-logo class="block h-12 w-auto fill-current text-gray-600 dark:text-gray-400"/>

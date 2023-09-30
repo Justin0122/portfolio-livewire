@@ -10,7 +10,7 @@ class About extends Model
 
     public function getFiles()
     {
-        $files = glob(public_path('about/*'));
+        $files = glob(public_path('storage/about/*'));
         $files = array_map('basename', $files);
         sort($files);
         return $files;
