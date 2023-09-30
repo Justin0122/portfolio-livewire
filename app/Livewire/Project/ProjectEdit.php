@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Project;
+namespace App\Livewire\Project;
 
 use App\Models\Framework;
 use App\Models\Language;
@@ -92,7 +92,7 @@ class ProjectEdit extends Component
                 Storage::move($file, 'public/' . $project->id . '/' . $newName);
             }
         }
-        $this->emit('projectUpdated', true);
+        $this->dispatch('projectUpdated', true);
 
         $this->photos = [];
 

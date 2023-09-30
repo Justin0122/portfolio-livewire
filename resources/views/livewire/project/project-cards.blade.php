@@ -4,7 +4,7 @@
             <x-text-input type="text"
                           class="border-2 border-gray-300 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
                           placeholder="Search projects..."
-                          wire:model="searchProjects"/>
+                          wire:model.live="searchProjects"/>
         </label>
     </div>
     <div class="flex justify-center items-center mb-4">

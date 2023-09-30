@@ -13,7 +13,7 @@
                 </thead>
                 <tbody>
 
-                <form wire:submit.prevent="edit ({{ $project->id }})">
+                <form wire:submit="edit ({{ $project->id }})">
                     @csrf
                     @method('PUT')
                     <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
@@ -21,24 +21,24 @@
                             <x-input-label for="name" value="{{ __('Name') }}" class="sr-only"/>
                             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
                                           value="{{ $project->name }}" required autofocus autocomplete="name"
-                                          wire:model.defer="name"/>
+                                          wire:model="name"/>
                         </td>
                         <td class="py-4 px-6 text-center">
                             <x-input-label for="github" value="{{ __('Github') }}" class="sr-only"/>
                             <x-text-input id="github" name="github_link" type="text" class="mt-1 block w-full"
                                           value="{{ $project->github }}" autofocus autocomplete="github_link"
-                                          wire:model.defer="github_link"/>
+                                          wire:model="github_link"/>
                         </td>
                         <td class="py-4 px-6 text-center">
                             <label for="active"></label><input type="checkbox"
                                                                class="form-checkbox h-8 w-8 text-green-600"
-                                                               wire:model.defer="active"
+                                                               wire:model="active"
                                                                name="active" id="active"/>
                         </td>
                         <td class="py-4 px-6 text-center">
                             <label for="pinned"></label><input type="checkbox"
                                                                class="form-checkbox h-8 w-8 text-green-600"
-                                                               wire:model.defer="pinned"
+                                                               wire:model="pinned"
                                                                name="pinned" id="pinned"/>
 
                         </td>
@@ -61,13 +61,13 @@
             </table>
 
             <div class="w-full overflow-x-auto lg:hidden">
-                <form wire:submit.prevent="edit ({{ $project->id }})">
+                <form wire:submit="edit ({{ $project->id }})">
                     <div class="name">
                         <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 sm:px-6">
                             <x-input-label for="email" :value="__('Name')"/>
                             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
                                           value="{{ $project->name }}" required autofocus autocomplete="name"
-                                          wire:model.defer="name"/>
+                                          wire:model="name"/>
                         </div>
                     </div>
                     <div class="github">
@@ -75,7 +75,7 @@
                             <x-input-label for="github" value="{{ __('Github') }}"/>
                             <x-text-input id="github" name="github_link" type="text" class="mt-1 block w-full"
                                           value="{{ $project->github }}" autofocus autocomplete="github_link"
-                                          wire:model.defer="github_link"/>
+                                          wire:model="github_link"/>
                         </div>
                     </div>
                     <div class="save-button mt-4 mb-4">
@@ -99,7 +99,7 @@
                                    for="active">Active</label>
                             <label for="active"></label><input type="checkbox"
                                                                class="form-checkbox h-8 w-8 text-green-600"
-                                                               wire:model.defer="active"
+                                                               wire:model="active"
                                                                name="active" id="active"/>
                         </div>
                         <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 sm:px-6">
@@ -107,7 +107,7 @@
                                    for="pinned">Pinned</label>
                             <label for="pinned"></label><input type="checkbox"
                                                                class="form-checkbox h-8 w-8 text-green-600"
-                                                               wire:model.defer="pinned"
+                                                               wire:model="pinned"
                                                                name="pinned" id="pinned"/>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                     Images</label>
                 <input
                     class="block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="cover_image" type="file" wire:model="photos" multiple/>
+                    id="cover_image" type="file" wire:model.live="photos" multiple/>
             </div>
             @if ($photos)
                 <div class="px-4 py-4 bg-gray-50 dark:bg-gray-800 sm:px-6 overflow-y-auto h-52">
@@ -172,7 +172,7 @@
                 <x-input-label for="description" :value="__('Description')"/>
                 <textarea
                     class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full h-48"
-                    id="description" wire:model.defer="description"></textarea>
+                    id="description" wire:model="description"></textarea>
                 @error('description') <span class="error">{{ $message }}</span> @enderror
             </div>
         </div>

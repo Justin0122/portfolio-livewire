@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Project;
+namespace App\Livewire\Project;
 
 use App\Models\Project;
 use Illuminate\Contracts\View\Factory;
@@ -13,10 +13,12 @@ class ProjectsTable extends Component
 {
     use WithPagination;
 
-    public $selectAll = false;
-    public $searchProjects = '';
+    public bool $selectAll = false;
+    public string $searchProjects = '';
 
     public $name;
+
+    public int $page = 1;
 
     public function render()
     {
@@ -30,7 +32,7 @@ class ProjectsTable extends Component
                         $query->where('name', 'like', '%' . $this->searchProjects . '%');
                     });
             })
-            ->paginate(10, ['*'], 'page', $this->page);
+            ->paginate(10);
 
         return view('livewire.project.projects-table', [
             'projects' => $projects,

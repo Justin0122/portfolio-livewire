@@ -6,7 +6,7 @@
                 <input type="text"
                        class="border-2 border-gray-300 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-300 md:w-1/4 w-full my-2"
                        placeholder="Search projects..."
-                       wire:model="searchProjects"/>
+                       wire:model.live="searchProjects"/>
             </label>
         </div>
 
@@ -26,13 +26,13 @@
             </tr>
             </thead>
             <tbody class="bg-white dark:bg-gray-800">
-            <form wire:submit.prevent="createProject" method="POST" enctype="multipart/form-data">
+            <form wire:submit="createProject" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600 hidden md:table-row">
                     <td class="py-4 px-6"></td>
                     <td class="py-4 px-6">
-                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" wire:model="name"
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" wire:model.live="name"
                                       :value="old('name')" required autofocus/>
                         @error ('name') <span class="text-red-500">{{ $message }}</span> @enderror
                     </td>
