@@ -9,9 +9,13 @@ use Livewire\Component;
 class ProjectShow extends Component
 {
     public $project;
+    public $images;
 
-    public function mount(Project $project)
+    public function mount()
     {
+        $id = request()->segment(2);
+
+        $project = Project::where('is_pinned', true)->where('id', $id)->first();
         $this->images = $project->getFiles($project);
         $this->project = $project->load('languages', 'frameworks');
     }

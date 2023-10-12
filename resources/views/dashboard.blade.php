@@ -19,7 +19,7 @@
     </x-slot>
 
     <div class="py-12 text-gray-900 dark:text-gray-100">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 lg:pt-12 lg:mb-12 xs:mb-0 sm:mb-0"
+        <div class="max-w-7xl mx-auto lg:px-8"
              id="projects">
             <livewire:project.project-carousel/>
         </div>

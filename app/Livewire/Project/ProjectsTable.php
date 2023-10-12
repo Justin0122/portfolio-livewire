@@ -65,13 +65,8 @@ class ProjectsTable extends Component
 
     public function togglePinned($id): void
     {
-        $project = Project::find($id);
-        $project->is_pinned = !$project->is_pinned;
-        if ($project->is_pinned) {
-            $project->is_active = true;
-        }
-        $project->save(['is_pinned', 'is_active']);
-        session()->flash('message', 'project updated successfully.');
+        $project = new ProjectEdit();
+        $project->togglePinned($id);
     }
 
 

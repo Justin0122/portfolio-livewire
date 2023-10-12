@@ -16,91 +16,62 @@ class ProjectEdit extends Component
 {
     use WithFileUploads;
 
-    public $name;
-    public $description;
-    public $github_link;
-    public $photos = [];
-    public $images = [];
-    public $active;
-    public $pinned;
+    public $project;
+    public array $photos = [];
+    public array $images;
 
-    public function mount(Project $project)
+    public string $name;
+    public string $description;
+    public string $github_link;
+
+
+    public function mount(): void
     {
-        $this->name = $project->name;
-        $this->description = $project->description;
-        $this->github_link = $project->github_link;
-        $this->project = $project;
-        $this->images = $project->getFiles($project);
-        $this->active = $project->is_active;
-        $this->pinned = $project->is_pinned;
+        $id = request()->segment(2);
+        $this->project = Project::find($id);
+
+        $this->name = $this->project->name;
+        $this->description = $this->project->description ?? '';
+        $this->github_link = $this->project->github_link ?? '';
+        $this->is_active = $this->project->is_active;
+        $this->is_pinned = $this->project->is_pinned;
     }
 
     public function render()
     {
         return view('livewire.project.project-edit', [
             'project' => $this->project,
-            'images' => $this->images,
-            'photos' => $this->photos,
+            'images' => $this->images ?? [],
         ]);
     }
 
-    public function edit($id)
+    public function edit()
     {
-        session()->flash('status', 'project-updated');
-
         $this->validate([
             'name' => 'required',
             'description' => 'required',
             'github_link' => '',
-            'active' => 'boolean',
-            'pinned' => 'boolean',
         ]);
 
-        if ($this->pinned) {
-            $this->active = true;
-        }
-
-        $project = Project::find($id);
-        $projectName = strtolower(str_replace(' ', '-', $this->name));
-        $imageCount = count($project->getFiles($project));
-        $data = [
+        $this->project->update([
             'name' => $this->name,
             'description' => $this->description,
             'github_link' => $this->github_link,
-            'updated_at' => now(),
-            'is_active' => $this->active,
-            'is_pinned' => $this->pinned,
-        ];
+        ]);
 
-        //if the github link is not empty, update the project with the github api
         if ($this->github_link) {
             $this->updateWithGithubApi($this->github_link);
         }
 
         if ($this->photos) {
+            $imageCount = count($this->project->getFiles($this->project));
             foreach ($this->photos as $photo) {
                 $imageCount++;
-                $photoName = $projectName . $imageCount . '.' . $photo->getClientOriginalExtension();
-                $photo->storeAs('public/' . $project->id, $photoName);
-            }
-        } else {
-            $files = Storage::files('public/' . $project->id);
-            foreach ($files as $file) {
-                $oldName = basename($file);
-                $pattern = '/^' . preg_quote($project->name) . '/i';
-                $newName = preg_replace($pattern, $projectName, $oldName, 1);
-                Storage::move($file, 'public/' . $project->id . '/' . $newName);
+                $photoName = $this->project->name . '-' . $imageCount . '.' . $photo->getClientOriginalExtension();
+                $photo->storeAs('public/' . $this->project->id, $photoName);
             }
         }
-        $this->dispatch('projectUpdated', true);
 
-        $this->photos = [];
-
-        $project->update($data);
-        $this->project = $project;
-        $this->images = $project->getFiles($project);
-
-        $this->render();
     }
 
     public function updateWithGithubApi($githubLink): void
@@ -169,14 +140,26 @@ class ProjectEdit extends Component
         return $frameworkNames;
     }
 
-
-    public function removePhoto($id, $photo)
+    public function togglePinned($id): void
     {
-        $path = storage_path('app/public/' . $id . '/' . $photo);
-        if (file_exists($path)) {
-            unlink($path);
+        $project = Project::find($id);
+        $project->is_pinned = !$project->is_pinned;
+        if ($project->is_pinned) {
+            $project->is_active = true;
         }
-        $this->images = $this->project->getFiles($this->project);
-        $this->render();
+        $project->save(['is_pinned', 'is_active']);
+        session()->flash('message', 'project updated successfully.');
+    }
+
+
+    public function toggleActive($id): void
+    {
+        $project = Project::find($id);
+        $project->is_active = !$project->is_active;
+        if (!$project->is_active) {
+            $project->is_pinned = false;
+        }
+        $project->save(['is_pinned', 'is_active']);
+        session()->flash('message', 'project updated successfully.');
     }
 }
