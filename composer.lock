@@ -2056,6 +2056,7 @@
                 "composer/semver": "^3.0",
                 "ext-fileinfo": "*",
                 "ext-ftp": "*",
+                "ext-zip": "*",
                 "friendsofphp/php-cs-fixer": "^3.5",
                 "google/cloud-storage": "^1.23",
                 "microsoft/azure-storage-blob": "^1.1",
@@ -4275,6 +4276,7 @@
                 "shasum": ""
             },
             "require": {
+                "ext-zip": "^1.14.0",
                 "illuminate/console": "^10.10.0",
                 "illuminate/contracts": "^10.10.0",
                 "illuminate/events": "^10.10.0",
